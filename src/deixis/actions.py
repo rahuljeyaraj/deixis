@@ -102,8 +102,8 @@ class Action(_Model):
 
 
 #: Actions every profile gets. They need no robot code to resolve; the robot decides what
-#: they do. `locate` is not offered to agents: a robot uses it to turn an answer ("here",
-#: while pointing again) into a place or a hold.
+#: they do. `locate` and `measure` are not offered to agents: a robot uses them to turn an
+#: answer ("here" while pointing again, "this big" while showing) into a place or a size.
 STANDARD_ACTIONS: tuple[Action, ...] = (
     Action(
         name="adjust",
@@ -133,6 +133,12 @@ STANDARD_ACTIONS: tuple[Action, ...] = (
         name="locate",
         description="Where the person pointed: resolves one place.",
         params=[Param(name="place", type="place", want="point", required=True)],
+        agent=False,
+    ),
+    Action(
+        name="measure",
+        description="How big the person showed: resolves one size.",
+        params=[Param(name="size", type="size", required=True)],
         agent=False,
     ),
 )

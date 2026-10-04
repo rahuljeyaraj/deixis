@@ -240,6 +240,17 @@ def test_kind4_size_by_hand(plotter):
     assert huge.ask.reason == "no_size"  # above the profile's 200 mm
 
 
+def test_kind4_measure_an_answer(plotter):
+    """ "How big?" ... "this big": the hidden `measure` action sizes the answer alone."""
+    words = say("this big")  # "this" at 10.0..10.3
+    r = run(plotter, words=words, spans=[span(9.8, 10.9, 47)],
+            calls=[call("measure", size={"word_index": 0})])  # fmt: skip
+    s = r.calls[0].size("size")
+    assert s.mm == 47 and s.evidence["span_t"] == [9.8, 10.9]
+    r = run(plotter, words=words, spans=[], calls=[call("measure", size={"word_index": 0})])
+    assert r.ask.reason == "no_size"
+
+
 def test_kind4_no_size_gestures_on_this_robot(vacuum):
     spot = {"name": "spot", "params": [{"name": "place", "type": "place", "want": "box"},
                                        {"name": "size", "type": "size"}]}  # fmt: skip
@@ -442,6 +453,7 @@ def test_kind9_a_bit_left(name, step):
             context={"previous": {"place": prev.model_dump(mode="json")}})  # fmt: skip
     w = r.calls[0].where("place")
     assert w.mean_mm == pytest.approx((x - step, y)) and w.source == "adjust"
+    assert w.evidence["offset_mm"] == [-step, 0]  # a robot moves its own copy by this
     bigger = run(p, words=say("bigger"), calls=[call("adjust", scale=1.5)],
                  context={"previous": {"place": prev.model_dump(mode="json"),
                                        "size": {"mm": 40, "source": "gesture"}}})  # fmt: skip

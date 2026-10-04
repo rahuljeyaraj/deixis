@@ -739,6 +739,7 @@ def adjust(
         "dy": dy,
         "scale": scale,
         "step_mm": step,
+        "offset_mm": [ox, oy],  # what to move the robot's own copy by
         "previous": where.model_dump(mode="json", exclude={"version"}),
     }
     area = profile.area

@@ -63,7 +63,7 @@ def test_tools_are_valid_json_schema_without_coordinates(name):
     names = [t["function"]["name"] for t in tools]
     assert names[: len(p.actions)] == [a.name for a in p.actions]
     assert {"adjust", "confirm", "cancel", "stop", "ask_user"} <= set(names)
-    assert "locate" not in names  # resolvable, not offered to agents
+    assert "locate" not in names and "measure" not in names  # resolvable, not for agents
     for t in tools:
         params = t["function"]["parameters"]
         jsonschema.Draft202012Validator.check_schema(params)
