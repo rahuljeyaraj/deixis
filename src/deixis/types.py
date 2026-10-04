@@ -25,8 +25,8 @@ class Hold:
     t1: float
     mean: Point  # mm, in the frame named by `frame`
     spread: Point  # standard deviation in x and y, mm
-    frame: str = "paper"
-    source: str = "index_tip"  # e.g. "index_tip", "foot"
+    frame: str = ""  # the frame named by the profile
+    source: str = "pointer"  # e.g. "finger", "feet", "gaze", "click"
 
     @property
     def mid(self) -> float:

@@ -1,7 +1,7 @@
 """Deixis resolver v1 (plan 4.3): pair spoken words with pointing holds and size gestures.
 
 Robot-agnostic: this module knows words, holds and size gestures, and returns `Where`
-messages or a reason to ask. Scene objects, relations and the plotter live in `pointdraw`.
+messages or a reason to ask. Things in the scene and relations are in `deixis.scene`.
 
 Timing rules (LR§3.4, all windows are parameters):
 
@@ -26,7 +26,7 @@ from typing import Literal
 
 from deixis.geometry import Point
 from deixis.types import Hold, Word
-from deixis.where import Where
+from deixis.where import Where, ask_text
 
 SpanKind = Literal["pinch", "two_hands"]
 
@@ -59,6 +59,10 @@ class ResolverParams:
     base_sigma_mm: float = 1.5  # added to the hold's spread in the covariance
     max_spread_mm: float = 6.0  # a hold that wandered more than this is too vague
     size_overlap: float = 0.5  # a hold this much covered by a pinch is a size gesture
+    asks: tuple[tuple[str, str], ...] = ()  # question texts by reason (from the profile)
+
+    def ask(self, reason: str, variant: str | None = None) -> str:
+        return ask_text(reason, variant, dict(self.asks))
 
 
 @dataclass(frozen=True)
@@ -138,7 +142,7 @@ def pick_hold(
     t_from, t_to = window(word, p)
     cands = [h for h in holds if _overlaps(h, t_from, t_to)]
     if not cands:
-        return Ask("no_gesture", "Where do you mean? Point at the paper.", word=word)
+        return Ask("no_gesture", p.ask("no_gesture"), word=word)
     ranked = _ranked(word, cands, avoid)
     usable = [h for h in ranked if h not in (avoid or set())] or ranked
     best = usable[0]
@@ -149,13 +153,13 @@ def pick_hold(
         if far and l2 > 0 and l1 / l2 < p.ambiguity_ratio:
             return Ask(
                 "ambiguous",
-                "Did you mean this place or that one? Please point again.",
+                p.ask("ambiguous"),
                 candidates=(best, second),  # type: ignore[arg-type]
                 word=word,
             )
     assert isinstance(best, Hold)
     if max(best.spread) > p.max_spread_mm:
-        return Ask("unsteady", "I couldn't tell where you pointed. Hold still a moment.", (best,))
+        return Ask("unsteady", p.ask("unsteady"), (best,), word=word)
     return Pick(best, "nearest", word, len(cands))
 
 
@@ -225,7 +229,7 @@ def last_hold(
     cands = [h for h in holds if _overlaps(h, speech_t0 - p.no_word_before_s, speech_t1)]
     usable = [h for h in cands if h not in (avoid or set())] or cands
     if not usable:
-        return Ask("no_gesture", "Where should it go? Point at the paper.")
+        return Ask("no_gesture", p.ask("no_gesture", "pointed"))
     best = max(usable, key=lambda h: (h.t1, h.t0))
     return Pick(best, "last_hold", None, len(cands))
 
@@ -236,16 +240,19 @@ def pick_span(word: Word, spans: Sequence[SpanHold], p: ResolverParams | None = 
     t_from, t_to = window(word, p)
     cands = [s for s in spans if _overlaps(s, t_from, t_to)]
     if not cands:
-        return Ask("no_size", "How big? Show me with your fingers or hands.", word=word)
+        return Ask("no_size", p.ask("no_size"), word=word)
     best = _ranked(word, cands)[0]
     return Pick(best, "nearest", word, len(cands))
 
 
-def hold_where(pick: Pick, frame: str = "paper", p: ResolverParams | None = None) -> Where:
-    """A point `Where` from a chosen hold, with its covariance and the evidence."""
+def hold_where(pick: Pick, frame: str | None = None, p: ResolverParams | None = None) -> Where:
+    """A point `Where` from a chosen hold, with its covariance and the evidence.
+
+    The frame is the hold's own unless one is given."""
     p = p or ResolverParams()
     h = pick.hold
     assert isinstance(h, Hold)
+    frame = h.frame if frame is None else frame
     sx = math.hypot(h.spread[0], p.base_sigma_mm)
     sy = math.hypot(h.spread[1], p.base_sigma_mm)
     ev: dict[str, object] = {

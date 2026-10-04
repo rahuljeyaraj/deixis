@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "name": "arm-table",
+  "frame": "table",
+  "area_mm": [0, 0, 600, 400],
+  "view": "surface",
+  "viewer": {"right": [1, 0], "away": [0, 1]},
+  "pointer": {
+    "source": "finger",
+    "filter": {"min_cutoff": 1.0, "beta": 0.01, "d_cutoff": 1.0},
+    "hold": {
+      "speed_enter_mm_s": 40, "speed_exit_mm_s": 60, "min_duration_s": 0.2,
+      "speed_window_s": 0.10, "max_gap_s": 0.12, "require_pointing": true, "history_s": 120
+    },
+    "base_sigma_mm": 5,
+    "max_spread_mm": 15,
+    "same_place_mm": 25
+  },
+  "spans": null,
+  "timing": {
+    "before_s": 1.5, "after_s": 0.5, "no_word_before_s": 2.0, "time_sigma_s": 0.6,
+    "ambiguity_ratio": 2.0, "size_overlap": 0.5
+  },
+  "sizes": {"default_mm": 50, "presets": {}, "min_mm": 20, "max_mm": 200},
+  "scene": {
+    "near_mm": 40, "ambiguous_mm": 12, "gap_mm": 15, "inside_fill": 0.7,
+    "empty_margin_mm": 10, "grid_mm": 5, "label_ties": "ask"
+  },
+  "adjust": {"step_mm": 30},
+  "outside": "ask",
+  "asks": {
+    "no_gesture": "Where? Point at the spot.",
+    "no_gesture.pointed": "Where should it go? Point at the spot.",
+    "no_object": "I don't see a block there. Which one? Point at it.",
+    "no_object.empty": "There are no blocks yet.",
+    "ambiguous_object": "This one or that one?",
+    "unknown_label": "I don't see a {label}. Which one? Point at it.",
+    "outside_area": "I can't reach there. Please point somewhere closer.",
+    "no_previous": "There's nothing to move right now."
+  },
+  "actions": [
+    {
+      "name": "move",
+      "description": "Pick up one block and put it down at a place.",
+      "params": [
+        {"name": "object", "type": "object", "required": true},
+        {"name": "place", "type": "place", "want": "box", "size_from": "object", "required": true}
+      ]
+    },
+    {"name": "home", "description": "Go back to the home pose."}
+  ]
+}

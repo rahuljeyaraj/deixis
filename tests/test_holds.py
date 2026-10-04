@@ -49,7 +49,7 @@ def test_two_holds_with_jitter():
         ]
     )
     pts = pts + rng.normal(0, 0.5, pts.shape)  # MediaPipe-like jitter in mm
-    holds = _feed(HoldDetector(), ts, pts)
+    holds = _feed(HoldDetector(HoldParams(frame="paper", source="finger")), ts, pts)
     assert len(holds) == 2
     h1, h2 = holds
     assert h1.mean == pytest.approx((100, 50), abs=2.5)
@@ -57,7 +57,7 @@ def test_two_holds_with_jitter():
     assert 0.5 < h1.t0 < 0.8 and 0.9 < h1.t1 < 1.2
     assert h1.t1 - h1.t0 >= 0.15
     assert max(h1.spread) < 2.0
-    assert h1.frame == "paper" and h1.source == "index_tip"
+    assert h1.frame == "paper" and h1.source == "finger"  # from the params
 
 
 def test_short_pause_is_not_a_hold():

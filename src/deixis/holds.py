@@ -30,8 +30,8 @@ class HoldParams:
     max_gap_s: float = 0.12  # dropouts or lost pose longer than this end a hold
     require_pointing: bool = True
     history_s: float = 30.0  # how long finished holds are kept for queries
-    frame: str = "paper"
-    source: str = "index_tip"
+    frame: str = ""  # the profile's frame
+    source: str = "pointer"  # e.g. "finger", "feet", "gaze"
 
 
 class HoldDetector:
