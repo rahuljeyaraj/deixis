@@ -103,7 +103,13 @@ All places in one request are in one frame. Two robots in one room work if they 
 
 The MCP server runs on the same computer as the robot app (stdio) and is called **once per sentence**, not once per camera frame. Pointer samples are sent in a batch with the sentence.
 
-- **Number:** time per call: to measure (target under 30 ms for 900 samples).
+- **Number:** a `resolve` with 900 pointer samples (30 s at 30 fps) takes a median of
+  **10 ms** over MCP (95 % of calls under 33 ms, worst 58 ms of 200), against 2 ms in-process;
+  starting the server takes about 1 s, once per session (rahul's PC, Windows 11,
+  Python 3.11, 4 Oct 2026; `scripts/latency.py`). The target was a median under 30 ms.
+- **So:** MCP adds well under a frame's time per sentence; the speech model and the language
+  model (about 0.2 s and 1.5 s) dominate. If MCP fails on the day, one setting
+  (`DEIXIS_MODE=direct`) runs the same code in-process.
 - **Later:** a networked server that outside agents can query live (plan task C22).
 
 ---
