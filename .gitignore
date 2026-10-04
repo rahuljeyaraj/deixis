@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venv*/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Secrets
+.env
+.env.*
+
+# Local outputs (MCP recordings, latency runs)
+out/
+
+# Claude Code worktrees
+.claude/worktrees/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+*.code-workspace
