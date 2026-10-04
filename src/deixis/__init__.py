@@ -5,6 +5,7 @@ Robot-agnostic and pure: no models, camera, network or robot; the same input giv
 output. Everything robot-specific comes from the robot's `Profile`.
 """
 
+from deixis.actions import Action, Call, CallError, Param, check_call, parse_call, tools_for_agent
 from deixis.frames import Transform, fit_transform
 from deixis.geometry import Box, Point, Polyline
 from deixis.profile import Profile, load_profile
@@ -17,6 +18,10 @@ from deixis.where import Answer, Ask, Size, Where
 __version__ = "0.1.0"
 
 __all__ = [
+    "Action",
+    "Call",
+    "CallError",
+    "Param",
     "Answer",
     "Ask",
     "Box",
@@ -32,8 +37,11 @@ __all__ = [
     "Where",
     "Word",
     "__version__",
+    "check_call",
     "fit_transform",
     "load_profile",
+    "parse_call",
     "schemas",
+    "tools_for_agent",
     "track",
 ]

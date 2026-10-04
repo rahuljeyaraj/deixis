@@ -23,6 +23,12 @@
           },
           "title": "Params",
           "type": "array"
+        },
+        "agent": {
+          "default": true,
+          "description": "false: resolvable, but not offered to agents as a tool.",
+          "title": "Agent",
+          "type": "boolean"
         }
       },
       "required": [
