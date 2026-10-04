@@ -1,0 +1,268 @@
+{
+ "source": "live-20261002-151319",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Draw",
+    "t0": 73713.639,
+    "t1": 73714.039,
+    "confidence": null
+   },
+   {
+    "text": "a",
+    "t0": 73714.199,
+    "t1": 73714.359,
+    "confidence": null
+   },
+   {
+    "text": "cross",
+    "t0": 73714.359,
+    "t1": 73714.839,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 73714.839,
+    "t1": 73714.999,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 73714.4023222,
+    "t1": 73717.3303222,
+    "mean": [
+     189.86806661852418,
+     74.70857732191976
+    ],
+    "spread": [
+     0.13689092022748633,
+     0.5515553772677343
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [
+   {
+    "t0": 73715.2183222,
+    "t1": 73715.4663222,
+    "span_mm": 57.109559620084624,
+    "kind": "pinch",
+    "center": [
+     205.90437500000002,
+     50.655625
+    ]
+   },
+   {
+    "t0": 73715.6183222,
+    "t1": 73715.9933222,
+    "span_mm": 54.82003283472202,
+    "kind": "pinch",
+    "center": [
+     204.27958333333333,
+     51.544999999999995
+    ]
+   },
+   {
+    "t0": 73716.0503222,
+    "t1": 73716.3083222,
+    "span_mm": 52.570186417778665,
+    "kind": "pinch",
+    "center": [
+     203.70187499999997,
+     52.635625000000005
+    ]
+   },
+   {
+    "t0": 73716.5793222,
+    "t1": 73716.8343222,
+    "span_mm": 52.10672221508469,
+    "kind": "pinch",
+    "center": [
+     203.7888888888889,
+     53.02333333333334
+    ]
+   },
+   {
+    "t0": 73716.8983222,
+    "t1": 73717.3303222,
+    "span_mm": 51.26362940721229,
+    "kind": "pinch",
+    "center": [
+     203.13821428571433,
+     53.653214285714284
+    ]
+   }
+  ],
+  "things": [],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "cross",
+     "place": {
+      "deixis": "here",
+      "word_index": 3
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 10.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   73713.639,
+   73714.999
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "cross",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       189.87,
+       74.71
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2687,
+        0.0
+       ],
+       [
+        0.0,
+        2.5542
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        73714.402,
+        73717.33
+       ],
+       "candidates": 1,
+       "word": "here",
+       "word_t": [
+        73714.839,
+        73714.999
+       ],
+       "lead_s": -1.027
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 10.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 73714.4023222,
+    "t1": 73717.3303222,
+    "mean": [
+     189.86806661852418,
+     74.70857732191976
+    ],
+    "spread": [
+     0.13689092022748633,
+     0.5515553772677343
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      189.87,
+      74.71
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2687,
+       0.0
+      ],
+      [
+       0.0,
+       2.5542
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       73714.402,
+       73717.33
+      ],
+      "candidates": 1,
+      "word": "here",
+      "word_t": [
+       73714.839,
+       73714.999
+      ],
+      "lead_s": -1.027
+     }
+    }
+   }
+  ]
+ }
+}

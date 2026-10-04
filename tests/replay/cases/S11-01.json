@@ -1,0 +1,225 @@
+{
+ "source": "S11",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.0,
+    "t1": 1.16,
+    "confidence": null
+   },
+   {
+    "text": "flower",
+    "t0": 1.22,
+    "t1": 1.68,
+    "confidence": null
+   },
+   {
+    "text": "in",
+    "t0": 1.74,
+    "t1": 1.96,
+    "confidence": null
+   },
+   {
+    "text": "an",
+    "t0": 2.02,
+    "t1": 2.24,
+    "confidence": null
+   },
+   {
+    "text": "empty",
+    "t0": 2.3,
+    "t1": 2.6999999999999997,
+    "confidence": null
+   },
+   {
+    "text": "spot",
+    "t0": 2.76,
+    "t1": 3.0999999999999996,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     28.91176470588235,
+     77.5,
+     42.176470588235304,
+     45.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "tree",
+    "label": "tree",
+    "box_mm": [
+     129.61520076481835,
+     77.5,
+     40.76959847036329,
+     45.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "sun",
+    "label": "sun",
+    "box_mm": [
+     20.0,
+     25.623529411764707,
+     30.0,
+     28.752941176470586
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "car",
+    "label": "car",
+    "box_mm": [
+     137.5,
+     31.778644491868423,
+     45.0,
+     16.442711016263157
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "mark_heart",
+    "label": "heart",
+    "box_mm": [
+     87.5,
+     99.5,
+     26.0,
+     24.5
+    ],
+    "kind": "mark",
+    "attrs": {},
+    "t": 0.0,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "flower",
+     "place": {
+      "empty_space": true
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   1.0,
+   3.0999999999999996
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "flower",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       101.5,
+       41.5
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "empty_space": true,
+       "side_mm": 40.0,
+       "size_mm": 40.0
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

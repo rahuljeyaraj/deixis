@@ -1,0 +1,205 @@
+{
+ "source": "S13",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "An",
+    "t0": 1.0,
+    "t1": 1.22,
+    "confidence": null
+   },
+   {
+    "text": "arrow",
+    "t0": 1.28,
+    "t1": 1.6800000000000002,
+    "confidence": null
+   },
+   {
+    "text": "from",
+    "t0": 1.74,
+    "t1": 2.08,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 2.14,
+    "t1": 2.42,
+    "confidence": null
+   },
+   {
+    "text": "brain",
+    "t0": 2.48,
+    "t1": 2.88,
+    "confidence": null
+   },
+   {
+    "text": "to",
+    "t0": 2.94,
+    "t1": 3.16,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 3.2199999999999998,
+    "t1": 3.5,
+    "confidence": null
+   },
+   {
+    "text": "hand",
+    "t0": 3.5599999999999996,
+    "t1": 3.8999999999999995,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "brain",
+    "label": "brain",
+    "box_mm": [
+     37.5,
+     68.83703249540159,
+     45.0,
+     42.32593500919681
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "hand",
+    "label": "hand",
+    "box_mm": [
+     148.1109967152032,
+     40.0,
+     23.778006569593572,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "draw_connector",
+    "args": {
+     "kind": "arrow",
+     "from": {
+      "label": "brain"
+     },
+     "to": {
+      "label": "hand"
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   1.0,
+   3.8999999999999995
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "draw_connector",
+    "args": {
+     "kind": "arrow",
+     "from": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "box",
+      "mean_mm": [
+       60.0,
+       90.0
+      ],
+      "box_mm": [
+       37.5,
+       68.83703249540159,
+       45.0,
+       42.32593500919681
+      ],
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": "brain",
+      "label": "brain",
+      "source": "object_ref",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "label",
+       "label": "brain"
+      }
+     },
+     "to": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "box",
+      "mean_mm": [
+       160.0,
+       60.0
+      ],
+      "box_mm": [
+       148.1109967152032,
+       40.0,
+       23.778006569593572,
+       40.0
+      ],
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": "hand",
+      "label": "hand",
+      "source": "object_ref",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "label",
+       "label": "hand"
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

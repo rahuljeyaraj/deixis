@@ -1,0 +1,277 @@
+{
+ "source": "S7",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.2,
+    "t1": 1.3599999999999999,
+    "confidence": null
+   },
+   {
+    "text": "house",
+    "t0": 1.42,
+    "t1": 1.8199999999999998,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 1.88,
+    "t1": 2.2199999999999998,
+    "confidence": null
+   },
+   {
+    "text": "and",
+    "t0": 2.28,
+    "t1": 2.5599999999999996,
+    "confidence": null
+   },
+   {
+    "text": "a",
+    "t0": 2.6199999999999997,
+    "t1": 2.78,
+    "confidence": null
+   },
+   {
+    "text": "tree",
+    "t0": 2.84,
+    "t1": 3.1799999999999997,
+    "confidence": null
+   },
+   {
+    "text": "there",
+    "t0": 3.2399999999999998,
+    "t1": 3.6399999999999997,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.391304347826087,
+    "mean": [
+     55.17560158713886,
+     74.90446931103415
+    ],
+    "spread": [
+     0.4900773953116973,
+     0.16300359156252356
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 2.9565217391304346,
+    "t1": 3.9565217391304346,
+    "mean": [
+     149.92361173191256,
+     79.859613487469
+    ],
+    "spread": [
+     0.118260206321683,
+     0.48978362777333373
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     36.434901960784316,
+     54.900000000000006,
+     37.49019607843138,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 6.055999999999999,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "house",
+     "place": {
+      "deixis": "here",
+      "word_index": 2
+     }
+    }
+   },
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "tree",
+     "place": {
+      "deixis": "there",
+      "word_index": 6
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 1,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   1.2,
+   3.6399999999999997
+  ],
+  "only": 1
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 1,
+    "name": "place_drawing",
+    "args": {
+     "object": "tree",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       149.92,
+       79.86
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.264,
+        0.0
+       ],
+       [
+        0.0,
+        2.4899
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "k_in_order",
+       "hold_t": [
+        2.957,
+        3.957
+       ],
+       "candidates": 2,
+       "word": "there",
+       "word_t": [
+        3.24,
+        3.64
+       ],
+       "lead_s": -0.217
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 2.9565217391304346,
+    "t1": 3.9565217391304346,
+    "mean": [
+     149.92361173191256,
+     79.859613487469
+    ],
+    "spread": [
+     0.118260206321683,
+     0.48978362777333373
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      149.92,
+      79.86
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.264,
+       0.0
+      ],
+      [
+       0.0,
+       2.4899
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "k_in_order",
+      "hold_t": [
+       2.957,
+       3.957
+      ],
+      "candidates": 2,
+      "word": "there",
+      "word_t": [
+       3.24,
+       3.64
+      ],
+      "lead_s": -0.217
+     }
+    }
+   }
+  ]
+ }
+}

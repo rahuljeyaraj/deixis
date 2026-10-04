@@ -1,0 +1,208 @@
+{
+ "source": "S14",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Label",
+    "t0": 1.4,
+    "t1": 1.7999999999999998,
+    "confidence": null
+   },
+   {
+    "text": "that",
+    "t0": 1.8599999999999999,
+    "t1": 2.1999999999999997,
+    "confidence": null
+   },
+   {
+    "text": "one",
+    "t0": 2.26,
+    "t1": 2.54,
+    "confidence": null
+   },
+   {
+    "text": "'Nemotron'",
+    "t0": 2.5999999999999996,
+    "t1": 3.1999999999999997,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.652173913043478,
+    "mean": [
+     105.06092297705368,
+     84.86480786930885
+    ],
+    "spread": [
+     0.1308031517117466,
+     0.3544359757720782
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "brain",
+    "label": "brain",
+    "box_mm": [
+     82.5,
+     63.837032495401594,
+     45.0,
+     42.32593500919682
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "write_label",
+    "args": {
+     "text": "Nemotron",
+     "place": {
+      "deixis": "that",
+      "word_index": 1
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   1.4,
+   3.1999999999999997
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "write_label",
+    "args": {
+     "text": "Nemotron",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       105.06,
+       84.86
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2671,
+        0.0
+       ],
+       [
+        0.0,
+        2.3756
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        0.913,
+        2.652
+       ],
+       "candidates": 1,
+       "word": "that",
+       "word_t": [
+        1.86,
+        2.2
+       ],
+       "lead_s": 0.077
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.652173913043478,
+    "mean": [
+     105.06092297705368,
+     84.86480786930885
+    ],
+    "spread": [
+     0.1308031517117466,
+     0.3544359757720782
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      105.06,
+      84.86
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2671,
+       0.0
+      ],
+      [
+       0.0,
+       2.3756
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       0.913,
+       2.652
+      ],
+      "candidates": 1,
+      "word": "that",
+      "word_t": [
+       1.86,
+       2.2
+      ],
+      "lead_s": 0.077
+     }
+    }
+   }
+  ]
+ }
+}

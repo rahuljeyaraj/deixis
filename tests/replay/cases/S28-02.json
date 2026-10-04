@@ -1,0 +1,128 @@
+{
+ "source": "S28",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "This",
+    "t0": 6.6,
+    "t1": 6.9399999999999995,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 7.0,
+    "t1": 7.28,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 3.434782608695652,
+    "mean": [
+     69.951129084265,
+     79.8290116965201
+    ],
+    "spread": [
+     0.1923922069967102,
+     0.24095778609655466
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 5.304347826086956,
+    "t1": 7.826086956521739,
+    "mean": [
+     110.00779275920605,
+     49.92766635215911
+    ],
+    "spread": [
+     0.11240963391700157,
+     0.1702247567726929
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [
+   {
+    "t0": 5.304347826086956,
+    "t1": 7.826086956521739,
+    "span_mm": 40.060204790077464,
+    "kind": "pinch",
+    "center": [
+     119.89201244424629,
+     32.508690661036
+    ]
+   }
+  ],
+  "things": [],
+  "calls": [
+   {
+    "name": "measure",
+    "args": {
+     "size": {
+      "word_index": 0
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   6.6,
+   7.28
+  ],
+  "only": null
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "measure",
+    "args": {
+     "size": {
+      "version": "1.0",
+      "mm": 40.060204790077464,
+      "side": "larger",
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "word": "This",
+       "word_t": [
+        6.6,
+        6.94
+       ],
+       "span_t": [
+        5.304,
+        7.826
+       ],
+       "size_kind": "pinch"
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": [
+   {
+    "size": 40.06,
+    "size_kind": "pinch",
+    "word": "This"
+   }
+  ]
+ }
+}

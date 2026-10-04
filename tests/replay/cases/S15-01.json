@@ -1,0 +1,234 @@
+{
+ "source": "S15",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Put",
+    "t0": 3.4,
+    "t1": 3.6799999999999997,
+    "confidence": null
+   },
+   {
+    "text": "a",
+    "t0": 3.7399999999999998,
+    "t1": 3.9,
+    "confidence": null
+   },
+   {
+    "text": "hand",
+    "t0": 3.96,
+    "t1": 4.3,
+    "confidence": null
+   },
+   {
+    "text": "inside",
+    "t0": 4.36,
+    "t1": 4.82,
+    "confidence": null
+   },
+   {
+    "text": "that",
+    "t0": 4.880000000000001,
+    "t1": 5.220000000000001,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 2.0869565217391304,
+    "t1": 4.260869565217392,
+    "mean": [
+     118.22674188822015,
+     72.2600337826315
+    ],
+    "spread": [
+     0.6485811077810577,
+     0.8357711172549755
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "mark_box",
+    "label": "box",
+    "box_mm": [
+     90.0,
+     42.5,
+     60.5,
+     64.0
+    ],
+    "kind": "mark",
+    "attrs": {},
+    "t": 6.03,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "hand",
+     "place": {
+      "relation": "inside",
+      "target": {
+       "deixis": "that",
+       "word_index": 4
+      }
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   3.4,
+   5.220000000000001
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "hand",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       120.25,
+       74.5
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "relation": "inside",
+       "target": "mark_box",
+       "size_mm": 40.0
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 2.0869565217391304,
+    "t1": 4.260869565217392,
+    "mean": [
+     118.22674188822015,
+     72.2600337826315
+    ],
+    "spread": [
+     0.6485811077810577,
+     0.8357711172549755
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      118.23,
+      72.26
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.6707,
+       0.0
+      ],
+      [
+       0.0,
+       2.9485
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       2.087,
+       4.261
+      ],
+      "candidates": 1,
+      "word": "that",
+      "word_t": [
+       4.88,
+       5.22
+      ],
+      "lead_s": 1.706
+     }
+    }
+   }
+  ]
+ }
+}

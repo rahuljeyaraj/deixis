@@ -1,0 +1,151 @@
+{
+ "source": "S4",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.0,
+    "t1": 1.16,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 1.22,
+    "t1": 1.5,
+    "confidence": null
+   },
+   {
+    "text": "house",
+    "t0": 1.56,
+    "t1": 1.96,
+    "confidence": null
+   },
+   {
+    "text": "in",
+    "t0": 2.02,
+    "t1": 2.24,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 2.3,
+    "t1": 2.58,
+    "confidence": null
+   },
+   {
+    "text": "top",
+    "t0": 2.6399999999999997,
+    "t1": 2.92,
+    "confidence": null
+   },
+   {
+    "text": "left",
+    "t0": 2.9799999999999995,
+    "t1": 3.3199999999999994,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "house",
+     "place": {
+      "named": "top left corner"
+     },
+     "size": {
+      "preset": "big"
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 80.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   1.0,
+   3.3199999999999994
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "house",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       48.0,
+       100.0
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "named": "top left corner"
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 80.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

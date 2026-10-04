@@ -1,0 +1,209 @@
+{
+ "source": "live-20261002-151319",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "This",
+    "t0": 73934.903,
+    "t1": 73935.063,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 73935.063,
+    "t1": 73935.303,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 73933.0253222,
+    "t1": 73934.1143222,
+    "mean": [
+     65.88976346459798,
+     117.30783369816098
+    ],
+    "spread": [
+     0.6958288073384821,
+     2.69176561844937
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 73934.5773222,
+    "t1": 73935.7303222,
+    "mean": [
+     67.94369997843498,
+     136.8738801045882
+    ],
+    "spread": [
+     0.6488899509807331,
+     0.9576045586115182
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [
+   {
+    "t0": 73934.5773222,
+    "t1": 73935.6653222,
+    "span_mm": 28.33683997908023,
+    "kind": "pinch",
+    "center": [
+     70.34749999999998,
+     123.28406249999998
+    ]
+   }
+  ],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "cross",
+    "label": "cross",
+    "box_mm": [
+     154.55350456231537,
+     39.39350456231535,
+     47.44649543768463,
+     70.6329908753693
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73751.7783222,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cross2",
+    "label": "cross",
+    "box_mm": [
+     46.2198665514153,
+     51.1598665514153,
+     31.6602668971694,
+     31.6602668971694
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73861.958,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cross3",
+    "label": "cross",
+    "box_mm": [
+     74.98,
+     140.0,
+     0.0,
+     0.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73888.6733222,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cross4",
+    "label": "cross",
+    "box_mm": [
+     202.0,
+     140.0,
+     0.0,
+     0.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73905.446,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat",
+    "label": "cat",
+    "box_mm": [
+     51.201011831705046,
+     97.31,
+     29.37797633658991,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73936.008,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "measure",
+    "args": {
+     "size": {
+      "word_index": 0
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   73934.903,
+   73935.303
+  ],
+  "only": null
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "measure",
+    "args": {
+     "size": {
+      "version": "1.0",
+      "mm": 28.33683997908023,
+      "side": "larger",
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "word": "This",
+       "word_t": [
+        73934.903,
+        73935.063
+       ],
+       "span_t": [
+        73934.577,
+        73935.665
+       ],
+       "size_kind": "pinch"
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": [
+   {
+    "size": 28.34,
+    "size_kind": "pinch",
+    "word": "This"
+   }
+  ]
+ }
+}

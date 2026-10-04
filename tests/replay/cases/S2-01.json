@@ -1,0 +1,250 @@
+{
+ "source": "S2",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.4,
+    "t1": 1.5599999999999998,
+    "confidence": null
+   },
+   {
+    "text": "cat",
+    "t0": 1.6199999999999999,
+    "t1": 1.9,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 1.96,
+    "t1": 2.3,
+    "confidence": null
+   },
+   {
+    "text": "this",
+    "t0": 2.36,
+    "t1": 2.6999999999999997,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 2.76,
+    "t1": 3.04,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.217391304347826,
+    "mean": [
+     60.18072827961777,
+     89.9429138561258
+    ],
+    "spread": [
+     0.47654483289231075,
+     0.27920469544862697
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 2.5217391304347827,
+    "t1": 3.608695652173913,
+    "mean": [
+     71.91397508440353,
+     95.78636787747452
+    ],
+    "spread": [
+     0.12899190519246576,
+     0.6163406760818405
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [
+   {
+    "t0": 2.4782608695652173,
+    "t1": 3.7391304347826084,
+    "span_mm": 44.98088863802507,
+    "kind": "pinch",
+    "center": [
+     83.08210888607064,
+     70.75182466139435
+    ]
+   }
+  ],
+  "things": [],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "cat",
+     "place": {
+      "deixis": "here",
+      "word_index": 2
+     },
+     "size": {
+      "word_index": 3
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   1.4,
+   3.04
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "cat",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       60.18,
+       89.94
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.4771,
+        0.0
+       ],
+       [
+        0.0,
+        2.328
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        0.913,
+        2.217
+       ],
+       "candidates": 2,
+       "word": "here",
+       "word_t": [
+        1.96,
+        2.3
+       ],
+       "lead_s": 0.395
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 44.98088863802507,
+      "side": "larger",
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "word": "this",
+       "word_t": [
+        2.36,
+        2.7
+       ],
+       "span_t": [
+        2.478,
+        3.739
+       ],
+       "size_kind": "pinch"
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.217391304347826,
+    "mean": [
+     60.18072827961777,
+     89.9429138561258
+    ],
+    "spread": [
+     0.47654483289231075,
+     0.27920469544862697
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "size": 44.98,
+    "size_kind": "pinch",
+    "word": "this"
+   },
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      60.18,
+      89.94
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.4771,
+       0.0
+      ],
+      [
+       0.0,
+       2.328
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       0.913,
+       2.217
+      ],
+      "candidates": 2,
+      "word": "here",
+      "word_t": [
+       1.96,
+       2.3
+      ],
+      "lead_s": 0.395
+     }
+    }
+   }
+  ]
+ }
+}

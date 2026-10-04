@@ -1,0 +1,243 @@
+{
+ "source": "S3",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.4,
+    "t1": 1.5599999999999998,
+    "confidence": null
+   },
+   {
+    "text": "tree",
+    "t0": 1.6199999999999999,
+    "t1": 1.96,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 2.02,
+    "t1": 2.36,
+    "confidence": null
+   },
+   {
+    "text": "about",
+    "t0": 2.42,
+    "t1": 2.82,
+    "confidence": null
+   },
+   {
+    "text": "this",
+    "t0": 2.88,
+    "t1": 3.2199999999999998,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 3.28,
+    "t1": 3.5599999999999996,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.1739130434782608,
+    "mean": [
+     110.07517438459227,
+     69.8850938546072
+    ],
+    "spread": [
+     0.1325654756352128,
+     0.15504192115464674
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [
+   {
+    "t0": 2.3043478260869565,
+    "t1": 3.782608695652174,
+    "span_mm": 72.03244758335534,
+    "kind": "two_hands",
+    "center": [
+     73.92570221218975,
+     66.14715152391703
+    ]
+   }
+  ],
+  "things": [],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "tree",
+     "place": {
+      "deixis": "here",
+      "word_index": 2
+     },
+     "size": {
+      "word_index": 4
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 72.03244758335534,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   1.4,
+   3.5599999999999996
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "tree",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       110.08,
+       69.89
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2676,
+        0.0
+       ],
+       [
+        0.0,
+        2.274
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        0.913,
+        2.174
+       ],
+       "candidates": 1,
+       "word": "here",
+       "word_t": [
+        2.02,
+        2.36
+       ],
+       "lead_s": 0.477
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 72.03244758335534,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.1739130434782608,
+    "mean": [
+     110.07517438459227,
+     69.8850938546072
+    ],
+    "spread": [
+     0.1325654756352128,
+     0.15504192115464674
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      110.08,
+      69.89
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2676,
+       0.0
+      ],
+      [
+       0.0,
+       2.274
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       0.913,
+       2.174
+      ],
+      "candidates": 1,
+      "word": "here",
+      "word_t": [
+       2.02,
+       2.36
+      ],
+      "lead_s": 0.477
+     }
+    }
+   }
+  ]
+ }
+}

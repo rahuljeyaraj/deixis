@@ -1,0 +1,209 @@
+{
+ "source": "live-20261002-154456",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Okay",
+    "t0": 75882.62,
+    "t1": 75882.7,
+    "confidence": null
+   },
+   {
+    "text": "so",
+    "t0": 75883.02,
+    "t1": 75883.1,
+    "confidence": null
+   },
+   {
+    "text": "you",
+    "t0": 75883.26,
+    "t1": 75883.34,
+    "confidence": null
+   },
+   {
+    "text": "leave",
+    "t0": 75883.42,
+    "t1": 75883.66,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "cat",
+    "label": "cat",
+    "box_mm": [
+     27.087179724707617,
+     20.633471511535397,
+     53.56564055058477,
+     72.93305697692921
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75452.3147111,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat2",
+    "label": "cat",
+    "box_mm": [
+     100.23601913797324,
+     117.84468064098448,
+     31.99585034492435,
+     22.15531935901552
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75496.936,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat3",
+    "label": "cat",
+    "box_mm": [
+     128.46,
+     140.0,
+     0.0,
+     0.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75540.5717111,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat4",
+    "label": "cat",
+    "box_mm": [
+     122.14261163782818,
+     30.86679989645204,
+     40.85477672434361,
+     55.62640020709593
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75583.9307111,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat5",
+    "label": "cat",
+    "box_mm": [
+     166.91941722762525,
+     123.60448270407817,
+     13.418110156238043,
+     16.395517295921834
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75638.5387111,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat6",
+    "label": "cat",
+    "box_mm": [
+     180.66224018216727,
+     33.50788820449567,
+     21.337759817832733,
+     43.44985903928978
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75687.9467111,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat7",
+    "label": "cat",
+    "box_mm": [
+     28.61420447966756,
+     108.79932627315162,
+     42.95159104066488,
+     31.20067372684838
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75786.6847111,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cat8",
+    "label": "cat",
+    "box_mm": [
+     192.77541795362063,
+     120.66995310076122,
+     9.224582046379368,
+     19.33004689923878
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 75834.9877111,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "measure",
+    "args": {
+     "size": {
+      "word_index": 1
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   75882.62,
+   75883.66
+  ],
+  "only": null
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ask",
+  "calls": [],
+  "ask": {
+   "version": "1.0",
+   "reason": "no_size",
+   "question": "How big? Show me with your fingers or hands.",
+   "call": 0,
+   "arg": "size",
+   "candidates": [],
+   "options": [],
+   "word": {
+    "text": "so",
+    "t0": 75883.02,
+    "t1": 75883.1,
+    "confidence": null
+   }
+  },
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

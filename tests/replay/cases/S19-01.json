@@ -1,0 +1,224 @@
+{
+ "source": "S19",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Label",
+    "t0": 1.4,
+    "t1": 1.7999999999999998,
+    "confidence": null
+   },
+   {
+    "text": "that",
+    "t0": 1.8599999999999999,
+    "t1": 2.1999999999999997,
+    "confidence": null
+   },
+   {
+    "text": "one",
+    "t0": 2.26,
+    "t1": 2.54,
+    "confidence": null
+   },
+   {
+    "text": "'garden'",
+    "t0": 2.5999999999999996,
+    "t1": 3.1799999999999997,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.652173913043478,
+    "mean": [
+     100.05891004434541,
+     79.86587412317954
+    ],
+    "spread": [
+     0.12985789035230824,
+     0.3427336764698484
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     51.25490196078431,
+     60.0,
+     37.49019607843138,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "tree",
+    "label": "tree",
+    "box_mm": [
+     111.88017845761631,
+     60.0,
+     36.239643084767366,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "write_label",
+    "args": {
+     "text": "garden",
+     "place": {
+      "deixis": "that",
+      "word_index": 1
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   1.4,
+   3.1799999999999997
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "write_label",
+    "args": {
+     "text": "garden",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       100.06,
+       79.87
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2669,
+        0.0
+       ],
+       [
+        0.0,
+        2.3675
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        0.913,
+        2.652
+       ],
+       "candidates": 1,
+       "word": "that",
+       "word_t": [
+        1.86,
+        2.2
+       ],
+       "lead_s": 0.077
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 2.652173913043478,
+    "mean": [
+     100.05891004434541,
+     79.86587412317954
+    ],
+    "spread": [
+     0.12985789035230824,
+     0.3427336764698484
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      100.06,
+      79.87
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2669,
+       0.0
+      ],
+      [
+       0.0,
+       2.3675
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       0.913,
+       2.652
+      ],
+      "candidates": 1,
+      "word": "that",
+      "word_t": [
+       1.86,
+       2.2
+      ],
+      "lead_s": 0.077
+     }
+    }
+   }
+  ]
+ }
+}

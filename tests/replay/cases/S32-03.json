@@ -1,0 +1,151 @@
+{
+ "source": "S32",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "An",
+    "t0": 18.0,
+    "t1": 18.22,
+    "confidence": null
+   },
+   {
+    "text": "eye",
+    "t0": 18.28,
+    "t1": 18.560000000000002,
+    "confidence": null
+   },
+   {
+    "text": "under",
+    "t0": 18.62,
+    "t1": 19.02,
+    "confidence": null
+   },
+   {
+    "text": "it",
+    "t0": 19.080000000000002,
+    "t1": 19.3,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "ear",
+    "label": "ear",
+    "box_mm": [
+     30.30967698070451,
+     88.92248723240743,
+     19.500646038590986,
+     32.015025535185146
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 16.217391304347824,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "eye",
+     "place": {
+      "relation": "below",
+      "target": {
+       "last": true
+      }
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   18.0,
+   19.3
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "eye",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       40.06,
+       58.92
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "relation": "below",
+       "target": "ear"
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

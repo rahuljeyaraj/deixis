@@ -1,0 +1,329 @@
+{
+ "source": "S26",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Now",
+    "t0": 215.0,
+    "t1": 215.28,
+    "confidence": null
+   },
+   {
+    "text": "an",
+    "t0": 215.34,
+    "t1": 215.56,
+    "confidence": null
+   },
+   {
+    "text": "arrow",
+    "t0": 215.62,
+    "t1": 216.02,
+    "confidence": null
+   },
+   {
+    "text": "from",
+    "t0": 216.08,
+    "t1": 216.42000000000002,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 216.48000000000002,
+    "t1": 216.76000000000002,
+    "confidence": null
+   },
+   {
+    "text": "brain",
+    "t0": 216.82000000000002,
+    "t1": 217.22000000000003,
+    "confidence": null
+   },
+   {
+    "text": "to",
+    "t0": 217.28000000000003,
+    "t1": 217.50000000000003,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 217.56000000000003,
+    "t1": 217.84000000000003,
+    "confidence": null
+   },
+   {
+    "text": "hand",
+    "t0": 217.90000000000003,
+    "t1": 218.24000000000004,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "ear",
+    "label": "ear",
+    "box_mm": [
+     20.421162499749187,
+     95.99492607110304,
+     19.497675000501637,
+     32.010147857793925
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 16.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "eye",
+    "label": "eye",
+    "box_mm": [
+     10.170000000000009,
+     66.9437504820801,
+     39.99999999999999,
+     19.051175589022918
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 35.65217391304348,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "brain",
+    "label": "brain",
+    "box_mm": [
+     85.04000000000002,
+     64.47559166155733,
+     49.99999999999997,
+     47.02881667688533
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 61.95652173913043,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "hand",
+    "label": "hand",
+    "box_mm": [
+     159.38906456831887,
+     27.150000000000002,
+     21.221870863362255,
+     35.69999999999999
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 112.21739130434783,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "arrow",
+    "label": null,
+    "box_mm": [
+     41.83416635955463,
+     94.56458488674585,
+     41.29050478114159,
+     13.929009275105827
+    ],
+    "kind": "arrow",
+    "attrs": {},
+    "t": 141.47826086956522,
+    "height_mm": null,
+    "selectable": false
+   },
+   {
+    "version": "1.0",
+    "id": "label_Nemotron",
+    "label": null,
+    "box_mm": [
+     92.89714285714287,
+     56.47559166155733,
+     34.28571428571429,
+     5.0
+    ],
+    "kind": "label",
+    "attrs": {
+     "text": "Nemotron"
+    },
+    "t": 163.08695652173913,
+    "height_mm": null,
+    "selectable": false
+   },
+   {
+    "version": "1.0",
+    "id": "label_Cosmos",
+    "label": null,
+    "box_mm": [
+     16.241428571428578,
+     58.943750482080105,
+     27.857142857142854,
+     5.0
+    ],
+    "kind": "label",
+    "attrs": {
+     "text": "Cosmos"
+    },
+    "t": 204.65217391304347,
+    "height_mm": null,
+    "selectable": false
+   },
+   {
+    "version": "1.0",
+    "id": "label_ASR",
+    "label": null,
+    "box_mm": [
+     23.622380952380958,
+     87.99492607110304,
+     13.095238095238095,
+     5.0
+    ],
+    "kind": "label",
+    "attrs": {
+     "text": "ASR"
+    },
+    "t": 204.65217391304347,
+    "height_mm": null,
+    "selectable": false
+   },
+   {
+    "version": "1.0",
+    "id": "mark_box",
+    "label": "box",
+    "box_mm": [
+     144.5,
+     18.0,
+     51.0,
+     54.0
+    ],
+    "kind": "mark",
+    "attrs": {},
+    "t": 105.04464931099459,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "draw_connector",
+    "args": {
+     "kind": "arrow",
+     "from": {
+      "label": "brain"
+     },
+     "to": {
+      "label": "hand"
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   215.0,
+   218.24000000000004
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "draw_connector",
+    "args": {
+     "kind": "arrow",
+     "from": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "box",
+      "mean_mm": [
+       110.04,
+       87.99
+      ],
+      "box_mm": [
+       85.04000000000002,
+       64.47559166155733,
+       49.99999999999997,
+       47.02881667688533
+      ],
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": "brain",
+      "label": "brain",
+      "source": "object_ref",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "label",
+       "label": "brain"
+      }
+     },
+     "to": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "box",
+      "mean_mm": [
+       170.0,
+       45.0
+      ],
+      "box_mm": [
+       159.38906456831887,
+       27.150000000000002,
+       21.221870863362255,
+       35.69999999999999
+      ],
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": "hand",
+      "label": "hand",
+      "source": "object_ref",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "label",
+       "label": "hand"
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

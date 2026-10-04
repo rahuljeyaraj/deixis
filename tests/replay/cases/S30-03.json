@@ -1,0 +1,157 @@
+{
+ "source": "S30",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 45.0,
+    "t1": 45.16,
+    "confidence": null
+   },
+   {
+    "text": "tree",
+    "t0": 45.22,
+    "t1": 45.56,
+    "confidence": null
+   },
+   {
+    "text": "next",
+    "t0": 45.62,
+    "t1": 45.96,
+    "confidence": null
+   },
+   {
+    "text": "to",
+    "t0": 46.019999999999996,
+    "t1": 46.239999999999995,
+    "confidence": null
+   },
+   {
+    "text": "it",
+    "t0": 46.3,
+    "t1": 46.519999999999996,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     36.15333424635435,
+     41.18033570217723,
+     42.213331507291315,
+     45.03932859564553
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 18.304347826086957,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "tree",
+     "place": {
+      "relation": "next_to",
+      "target": {
+       "last": true
+      }
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   45.0,
+   46.519999999999996
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "tree",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       108.37,
+       63.7
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "relation": "next_to",
+       "target": "house"
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

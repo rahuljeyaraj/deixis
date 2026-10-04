@@ -1,0 +1,282 @@
+{
+ "source": "S26",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Put",
+    "t0": 94.3,
+    "t1": 94.58,
+    "confidence": null
+   },
+   {
+    "text": "a",
+    "t0": 94.64,
+    "t1": 94.8,
+    "confidence": null
+   },
+   {
+    "text": "hand",
+    "t0": 94.86,
+    "t1": 95.2,
+    "confidence": null
+   },
+   {
+    "text": "inside",
+    "t0": 95.26,
+    "t1": 95.72,
+    "confidence": null
+   },
+   {
+    "text": "that",
+    "t0": 95.78,
+    "t1": 96.12,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 93.69565217391305,
+    "t1": 95.8695652173913,
+    "mean": [
+     168.19433439078264,
+     43.12608532879799
+    ],
+    "spread": [
+     0.45956967148817934,
+     0.7433655307859675
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "ear",
+    "label": "ear",
+    "box_mm": [
+     20.421162499749187,
+     95.99492607110304,
+     19.497675000501637,
+     32.010147857793925
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 16.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "eye",
+    "label": "eye",
+    "box_mm": [
+     10.170000000000009,
+     66.9437504820801,
+     39.99999999999999,
+     19.051175589022918
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 35.65217391304348,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "brain",
+    "label": "brain",
+    "box_mm": [
+     85.04000000000002,
+     64.47559166155733,
+     49.99999999999997,
+     47.02881667688533
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 61.95652173913043,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "mark_box",
+    "label": "box",
+    "box_mm": [
+     144.5,
+     18.0,
+     51.0,
+     54.0
+    ],
+    "kind": "mark",
+    "attrs": {},
+    "t": 105.04464931099459,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "hand",
+     "place": {
+      "relation": "inside",
+      "target": {
+       "deixis": "that",
+       "word_index": 4
+      }
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   94.3,
+   96.12
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "hand",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       170.0,
+       45.0
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "relation": "inside",
+       "target": "mark_box",
+       "size_mm": 35.699999999999996
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 93.69565217391305,
+    "t1": 95.8695652173913,
+    "mean": [
+     168.19433439078264,
+     43.12608532879799
+    ],
+    "spread": [
+     0.45956967148817934,
+     0.7433655307859675
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      168.19,
+      43.13
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.4612,
+       0.0
+      ],
+      [
+       0.0,
+       2.8026
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       93.696,
+       95.87
+      ],
+      "candidates": 1,
+      "word": "that",
+      "word_t": [
+       95.78,
+       96.12
+      ],
+      "lead_s": 0.997
+     }
+    }
+   }
+  ]
+ }
+}

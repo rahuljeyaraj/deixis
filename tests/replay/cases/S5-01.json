@@ -1,0 +1,211 @@
+{
+ "source": "S5",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 2.3,
+    "t1": 2.46,
+    "confidence": null
+   },
+   {
+    "text": "sun",
+    "t0": 2.52,
+    "t1": 2.8,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 2.86,
+    "t1": 3.1999999999999997,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 1.826086956521739,
+    "mean": [
+     150.0718665807791,
+     99.83299650580084
+    ],
+    "spread": [
+     0.13934962429487918,
+     0.1570490332586494
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "sun",
+     "place": {
+      "deixis": "here",
+      "word_index": 2
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   2.3,
+   3.1999999999999997
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "sun",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       150.07,
+       99.83
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2694,
+        0.0
+       ],
+       [
+        0.0,
+        2.2747
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        0.913,
+        1.826
+       ],
+       "candidates": 1,
+       "word": "here",
+       "word_t": [
+        2.86,
+        3.2
+       ],
+       "lead_s": 1.49
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 1.826086956521739,
+    "mean": [
+     150.0718665807791,
+     99.83299650580084
+    ],
+    "spread": [
+     0.13934962429487918,
+     0.1570490332586494
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      150.07,
+      99.83
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2694,
+       0.0
+      ],
+      [
+       0.0,
+       2.2747
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       0.913,
+       1.826
+      ],
+      "candidates": 1,
+      "word": "here",
+      "word_t": [
+       2.86,
+       3.2
+      ],
+      "lead_s": 1.49
+     }
+    }
+   }
+  ]
+ }
+}

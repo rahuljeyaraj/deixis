@@ -1,0 +1,250 @@
+{
+ "source": "S30",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 80.0,
+    "t1": 80.16,
+    "confidence": null
+   },
+   {
+    "text": "sun",
+    "t0": 80.22,
+    "t1": 80.5,
+    "confidence": null
+   },
+   {
+    "text": "up",
+    "t0": 80.56,
+    "t1": 80.78,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 80.84,
+    "t1": 81.18,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 79.95652173913044,
+    "t1": 81.65217391304347,
+    "mean": [
+     165.04860365395385,
+     111.97103480722528
+    ],
+    "spread": [
+     0.10545817192072292,
+     0.4868464414216623
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     36.15333424635435,
+     41.18033570217723,
+     42.213331507291315,
+     45.03932859564553
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 18.304347826086957,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "tree",
+    "label": "tree",
+    "box_mm": [
+     88.36666575364565,
+     43.699999999999996,
+     36.239643084767366,
+     39.99999999999999
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 54.130434782608695,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "sun",
+     "place": {
+      "deixis": "here",
+      "word_index": 3
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   80.0,
+   81.18
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "sun",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       165.05,
+       111.97
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2611,
+        0.0
+       ],
+       [
+        0.0,
+        2.487
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        79.957,
+        81.652
+       ],
+       "candidates": 1,
+       "word": "here",
+       "word_t": [
+        80.84,
+        81.18
+       ],
+       "lead_s": 0.036
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 79.95652173913044,
+    "t1": 81.65217391304347,
+    "mean": [
+     165.04860365395385,
+     111.97103480722528
+    ],
+    "spread": [
+     0.10545817192072292,
+     0.4868464414216623
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      165.05,
+      111.97
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2611,
+       0.0
+      ],
+      [
+       0.0,
+       2.487
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       79.957,
+       81.652
+      ],
+      "candidates": 1,
+      "word": "here",
+      "word_t": [
+       80.84,
+       81.18
+      ],
+      "lead_s": 0.036
+     }
+    }
+   }
+  ]
+ }
+}

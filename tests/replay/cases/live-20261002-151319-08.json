@@ -1,0 +1,180 @@
+{
+ "source": "live-20261002-151319",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "This",
+    "t0": 73899.655,
+    "t1": 73899.895,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 73899.895,
+    "t1": 73900.135,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 73896.7863222,
+    "t1": 73898.8343222,
+    "mean": [
+     225.8566666927232,
+     178.71589623892066
+    ],
+    "spread": [
+     1.3953222131399676,
+     1.1710549156119792
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 73899.0893222,
+    "t1": 73899.3313222,
+    "mean": [
+     232.22339341984826,
+     188.79094987143262
+    ],
+    "spread": [
+     0.9331274764049613,
+     1.6460399835951103
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 73899.6513222,
+    "t1": 73900.6093222,
+    "mean": [
+     223.7293781810483,
+     197.77933383683464
+    ],
+    "spread": [
+     0.38831759933100213,
+     0.2525906277676803
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "cross",
+    "label": "cross",
+    "box_mm": [
+     154.55350456231537,
+     39.39350456231535,
+     47.44649543768463,
+     70.6329908753693
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73751.7783222,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cross2",
+    "label": "cross",
+    "box_mm": [
+     46.2198665514153,
+     51.1598665514153,
+     31.6602668971694,
+     31.6602668971694
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73861.958,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cross3",
+    "label": "cross",
+    "box_mm": [
+     74.98,
+     140.0,
+     0.0,
+     0.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73888.6733222,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "cross4",
+    "label": "cross",
+    "box_mm": [
+     202.0,
+     140.0,
+     0.0,
+     0.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 73900.463,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "cross",
+     "size": {
+      "word_index": 0
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   73899.655,
+   73900.135
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ask",
+  "calls": [],
+  "ask": {
+   "version": "1.0",
+   "reason": "no_size",
+   "question": "How big? Show me with your fingers or hands.",
+   "call": 0,
+   "arg": "size",
+   "candidates": [],
+   "options": [],
+   "word": {
+    "text": "This",
+    "t0": 73899.655,
+    "t1": 73899.895,
+    "confidence": null
+   }
+  },
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

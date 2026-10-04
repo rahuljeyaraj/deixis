@@ -1,0 +1,288 @@
+{
+ "source": "S26",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Label",
+    "t0": 148.0,
+    "t1": 148.4,
+    "confidence": null
+   },
+   {
+    "text": "that",
+    "t0": 148.46,
+    "t1": 148.8,
+    "confidence": null
+   },
+   {
+    "text": "one",
+    "t0": 148.86,
+    "t1": 149.14000000000001,
+    "confidence": null
+   },
+   {
+    "text": "'Nemotron'",
+    "t0": 149.20000000000002,
+    "t1": 149.8,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 147.82608695652175,
+    "t1": 149.52173913043478,
+    "mean": [
+     110.0508633758907,
+     87.89510954616121
+    ],
+    "spread": [
+     0.14002829771516237,
+     0.16828991389766698
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "ear",
+    "label": "ear",
+    "box_mm": [
+     20.421162499749187,
+     95.99492607110304,
+     19.497675000501637,
+     32.010147857793925
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 16.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "eye",
+    "label": "eye",
+    "box_mm": [
+     10.170000000000009,
+     66.9437504820801,
+     39.99999999999999,
+     19.051175589022918
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 35.65217391304348,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "brain",
+    "label": "brain",
+    "box_mm": [
+     85.04000000000002,
+     64.47559166155733,
+     49.99999999999997,
+     47.02881667688533
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 61.95652173913043,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "hand",
+    "label": "hand",
+    "box_mm": [
+     159.38906456831887,
+     27.150000000000002,
+     21.221870863362255,
+     35.69999999999999
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 112.21739130434783,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "mark_box",
+    "label": "box",
+    "box_mm": [
+     144.5,
+     18.0,
+     51.0,
+     54.0
+    ],
+    "kind": "mark",
+    "attrs": {},
+    "t": 105.04464931099459,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "arrow",
+    "label": null,
+    "box_mm": [
+     41.83416635955463,
+     94.56458488674585,
+     41.29050478114159,
+     13.929009275105827
+    ],
+    "kind": "arrow",
+    "attrs": {},
+    "t": 141.47826086956522,
+    "height_mm": null,
+    "selectable": false
+   }
+  ],
+  "calls": [
+   {
+    "name": "write_label",
+    "args": {
+     "text": "Nemotron",
+     "place": {
+      "deixis": "that",
+      "word_index": 1
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   148.0,
+   149.8
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "write_label",
+    "args": {
+     "text": "Nemotron",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       110.05,
+       87.9
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2696,
+        0.0
+       ],
+       [
+        0.0,
+        2.2783
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        147.826,
+        149.522
+       ],
+       "candidates": 1,
+       "word": "that",
+       "word_t": [
+        148.46,
+        148.8
+       ],
+       "lead_s": -0.214
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 147.82608695652175,
+    "t1": 149.52173913043478,
+    "mean": [
+     110.0508633758907,
+     87.89510954616121
+    ],
+    "spread": [
+     0.14002829771516237,
+     0.16828991389766698
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      110.05,
+      87.9
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2696,
+       0.0
+      ],
+      [
+       0.0,
+       2.2783
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       147.826,
+       149.522
+      ],
+      "candidates": 1,
+      "word": "that",
+      "word_t": [
+       148.46,
+       148.8
+      ],
+      "lead_s": -0.214
+     }
+    }
+   }
+  ]
+ }
+}

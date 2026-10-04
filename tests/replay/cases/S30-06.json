@@ -1,0 +1,256 @@
+{
+ "source": "S30",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "Label",
+    "t0": 150.0,
+    "t1": 150.4,
+    "confidence": null
+   },
+   {
+    "text": "that",
+    "t0": 150.46,
+    "t1": 150.8,
+    "confidence": null
+   },
+   {
+    "text": "one",
+    "t0": 150.86,
+    "t1": 151.14000000000001,
+    "confidence": null
+   },
+   {
+    "text": "'garden'",
+    "t0": 151.20000000000002,
+    "t1": 151.78000000000003,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 149.82608695652175,
+    "t1": 151.56521739130434,
+    "mean": [
+     55.12393102565547,
+     61.90625228741996
+    ],
+    "spread": [
+     0.20183923216825714,
+     0.6235482151296257
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     36.15333424635435,
+     41.18033570217723,
+     42.213331507291315,
+     45.03932859564553
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 18.304347826086957,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "tree",
+    "label": "tree",
+    "box_mm": [
+     88.36666575364565,
+     43.699999999999996,
+     36.239643084767366,
+     39.99999999999999
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 54.130434782608695,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "sun",
+    "label": "sun",
+    "box_mm": [
+     145.05,
+     92.8013725490196,
+     40.0,
+     38.337254901960776
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 88.82608695652173,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "flower",
+    "label": "flower",
+    "box_mm": [
+     152.46901960784314,
+     15.86,
+     25.20196078431374,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 124.82608695652173,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "write_label",
+    "args": {
+     "text": "garden",
+     "place": {
+      "deixis": "that",
+      "word_index": 1
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   150.0,
+   151.78000000000003
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "write_label",
+    "args": {
+     "text": "garden",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       55.12,
+       61.91
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        2.2907,
+        0.0
+       ],
+       [
+        0.0,
+        2.6388
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "nearest",
+       "hold_t": [
+        149.826,
+        151.565
+       ],
+       "candidates": 1,
+       "word": "that",
+       "word_t": [
+        150.46,
+        150.8
+       ],
+       "lead_s": -0.236
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 149.82608695652175,
+    "t1": 151.56521739130434,
+    "mean": [
+     55.12393102565547,
+     61.90625228741996
+    ],
+    "spread": [
+     0.20183923216825714,
+     0.6235482151296257
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      55.12,
+      61.91
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       2.2907,
+       0.0
+      ],
+      [
+       0.0,
+       2.6388
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "nearest",
+      "hold_t": [
+       149.826,
+       151.565
+      ],
+      "candidates": 1,
+      "word": "that",
+      "word_t": [
+       150.46,
+       150.8
+      ],
+      "lead_s": -0.236
+     }
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,224 @@
+{
+ "source": "S30",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "About",
+    "t0": 3.4,
+    "t1": 3.8,
+    "confidence": null
+   },
+   {
+    "text": "this",
+    "t0": 3.86,
+    "t1": 4.2,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 4.26,
+    "t1": 4.54,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 1.0434782608695652,
+    "t1": 4.608695652173913,
+    "mean": [
+     57.393550928645375,
+     63.78367435247069
+    ],
+    "spread": [
+     2.5015876074865093,
+     2.028074163138892
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [
+   {
+    "t0": 3.043478260869565,
+    "t1": 4.739130434782608,
+    "span_mm": 45.039328595645536,
+    "kind": "pinch",
+    "center": [
+     71.11595805693585,
+     42.929809472870616
+    ]
+   }
+  ],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     38.514901960784314,
+     43.7,
+     37.49019607843137,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": 4.423,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "house",
+     "size": {
+      "word_index": 1
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   3.4,
+   4.54
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "house",
+     "size": {
+      "version": "1.0",
+      "mm": 45.039328595645536,
+      "side": "larger",
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "word": "this",
+       "word_t": [
+        3.86,
+        4.2
+       ],
+       "span_t": [
+        3.043,
+        4.739
+       ],
+       "size_kind": "pinch"
+      }
+     },
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       57.39,
+       63.78
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        8.5079,
+        0.0
+       ],
+       [
+        0.0,
+        6.3631
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "gesture",
+      "confidence": 1.0,
+      "evidence": {
+       "rule": "last_hold",
+       "hold_t": [
+        1.043,
+        4.609
+       ],
+       "candidates": 1
+      }
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [
+   {
+    "t0": 1.0434782608695652,
+    "t1": 4.608695652173913,
+    "mean": [
+     57.393550928645375,
+     63.78367435247069
+    ],
+    "spread": [
+     2.5015876074865093,
+     2.028074163138892
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "log": [
+   {
+    "size": 45.04,
+    "size_kind": "pinch",
+    "word": "this"
+   },
+   {
+    "where": {
+     "version": "1.0",
+     "frame": "paper",
+     "kind": "point",
+     "mean_mm": [
+      57.39,
+      63.78
+     ],
+     "box_mm": null,
+     "path_mm": null,
+     "z_mm": null,
+     "cov_mm2": [
+      [
+       8.5079,
+       0.0
+      ],
+      [
+       0.0,
+       6.3631
+      ]
+     ],
+     "thing": null,
+     "label": null,
+     "source": "gesture",
+     "confidence": 1.0,
+     "evidence": {
+      "rule": "last_hold",
+      "hold_t": [
+       1.043,
+       4.609
+      ],
+      "candidates": 1
+     }
+    }
+   }
+  ]
+ }
+}

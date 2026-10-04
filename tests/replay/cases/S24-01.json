@@ -1,0 +1,112 @@
+{
+ "source": "S24",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.0,
+    "t1": 1.16,
+    "confidence": null
+   },
+   {
+    "text": "star",
+    "t0": 1.22,
+    "t1": 1.56,
+    "confidence": null
+   },
+   {
+    "text": "here",
+    "t0": 1.6199999999999999,
+    "t1": 1.96,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "star",
+     "place": {
+      "deixis": "here",
+      "word_index": 2
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   1.0,
+   1.96
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ask",
+  "calls": [],
+  "ask": {
+   "version": "1.0",
+   "reason": "no_gesture",
+   "question": "Where do you mean? Point at the paper.",
+   "call": 0,
+   "arg": "place",
+   "candidates": [],
+   "options": [],
+   "word": {
+    "text": "here",
+    "t0": 1.6199999999999999,
+    "t1": 1.96,
+    "confidence": null
+   }
+  },
+  "partial": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "holds": [],
+  "log": []
+ }
+}

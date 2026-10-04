@@ -1,0 +1,195 @@
+{
+ "source": "S9",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "A",
+    "t0": 1.0,
+    "t1": 1.16,
+    "confidence": null
+   },
+   {
+    "text": "bird",
+    "t0": 1.22,
+    "t1": 1.56,
+    "confidence": null
+   },
+   {
+    "text": "between",
+    "t0": 1.6199999999999999,
+    "t1": 2.1399999999999997,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 2.2,
+    "t1": 2.4800000000000004,
+    "confidence": null
+   },
+   {
+    "text": "tree",
+    "t0": 2.54,
+    "t1": 2.88,
+    "confidence": null
+   },
+   {
+    "text": "and",
+    "t0": 2.94,
+    "t1": 3.2199999999999998,
+    "confidence": null
+   },
+   {
+    "text": "the",
+    "t0": 3.28,
+    "t1": 3.5599999999999996,
+    "confidence": null
+   },
+   {
+    "text": "house",
+    "t0": 3.6199999999999997,
+    "t1": 4.02,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [],
+  "spans": [],
+  "things": [
+   {
+    "version": "1.0",
+    "id": "house",
+    "label": "house",
+    "box_mm": [
+     31.254901960784313,
+     50.0,
+     37.49019607843138,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   },
+   {
+    "version": "1.0",
+    "id": "tree",
+    "label": "tree",
+    "box_mm": [
+     141.88017845761632,
+     50.0,
+     36.23964308476738,
+     40.0
+    ],
+    "kind": "object",
+    "attrs": {},
+    "t": -1.0,
+    "height_mm": null,
+    "selectable": true
+   }
+  ],
+  "calls": [
+   {
+    "name": "place_drawing",
+    "args": {
+     "object": "bird",
+     "place": {
+      "relation": "between",
+      "target": {
+       "label": "tree"
+      },
+      "target2": {
+       "label": "house"
+      }
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [
+   {
+    "version": "1.0",
+    "call": 0,
+    "arg": "size",
+    "candidate": null,
+    "where": null,
+    "size": {
+     "version": "1.0",
+     "mm": 40.0,
+     "side": "larger",
+     "source": "default",
+     "confidence": 1.0,
+     "evidence": {}
+    },
+    "thing": null,
+    "hold": null
+   }
+  ],
+  "speech": [
+   1.0,
+   4.02
+  ],
+  "only": 0
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ok",
+  "calls": [
+   {
+    "index": 0,
+    "name": "place_drawing",
+    "args": {
+     "object": "bird",
+     "place": {
+      "version": "1.0",
+      "frame": "paper",
+      "kind": "point",
+      "mean_mm": [
+       105.0,
+       70.0
+      ],
+      "box_mm": null,
+      "path_mm": null,
+      "z_mm": null,
+      "cov_mm2": [
+       [
+        0.0,
+        0.0
+       ],
+       [
+        0.0,
+        0.0
+       ]
+      ],
+      "thing": null,
+      "label": null,
+      "source": "geometry",
+      "confidence": 1.0,
+      "evidence": {
+       "relation": "between",
+       "target": "tree",
+       "target2": "house"
+      }
+     },
+     "size": {
+      "version": "1.0",
+      "mm": 40.0,
+      "side": "larger",
+      "source": "default",
+      "confidence": 1.0,
+      "evidence": {}
+     }
+    }
+   }
+  ],
+  "ask": null,
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}

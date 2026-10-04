@@ -1,0 +1,99 @@
+{
+ "source": "S29",
+ "profile": "plotter-a5-1",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "This",
+    "t0": 6.6,
+    "t1": 6.9399999999999995,
+    "confidence": null
+   },
+   {
+    "text": "big",
+    "t0": 7.0,
+    "t1": 7.28,
+    "confidence": null
+   }
+  ],
+  "samples": [],
+  "holds": [
+   {
+    "t0": 0.9130434782608695,
+    "t1": 3.434782608695652,
+    "mean": [
+     70.03485328488892,
+     79.90144158910066
+    ],
+    "spread": [
+     0.12388505925252975,
+     0.18052181177599116
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   },
+   {
+    "t0": 5.304347826086956,
+    "t1": 8.08695652173913,
+    "mean": [
+     110.00340067932977,
+     50.08474131834128
+    ],
+    "spread": [
+     0.12475923772670056,
+     0.16893372829999206
+    ],
+    "frame": "paper",
+    "source": "finger",
+    "cov_mm2": null
+   }
+  ],
+  "spans": [],
+  "things": [],
+  "calls": [
+   {
+    "name": "measure",
+    "args": {
+     "size": {
+      "word_index": 0
+     }
+    }
+   }
+  ],
+  "context": {
+   "last_thing": null,
+   "previous": {}
+  },
+  "answers": [],
+  "speech": [
+   6.6,
+   7.28
+  ],
+  "only": null
+ },
+ "response": {
+  "version": "1.0",
+  "status": "ask",
+  "calls": [],
+  "ask": {
+   "version": "1.0",
+   "reason": "no_size",
+   "question": "How big? Show me with your fingers or hands.",
+   "call": 0,
+   "arg": "size",
+   "candidates": [],
+   "options": [],
+   "word": {
+    "text": "This",
+    "t0": 6.6,
+    "t1": 6.9399999999999995,
+    "confidence": null
+   }
+  },
+  "partial": [],
+  "holds": [],
+  "log": []
+ }
+}
