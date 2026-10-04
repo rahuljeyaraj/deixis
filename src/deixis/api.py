@@ -233,21 +233,17 @@ class _Resolver:
         need: Counter[int] = Counter()
         for i, call in enumerate(self.calls):
             for p in self._params(call):
-                if p.type not in ("place", "object") or self._answered(i, p.name):
-                    continue
+                if p.type not in ("place", "object") or (i, p.name) in self.answers:
+                    continue  # an answered argument keeps its answer
                 for idx, n in _deictic_words(call.ref(p.name)).items():
-                    self._check_index(idx)
-                    need[idx] = max(need[idx], n)
+                    if idx < len(self.words):  # a bad index fails its own call, later
+                        need[idx] = max(need[idx], n)
         order = [i for i in sorted(need) for _ in range(need[i])]
         if not order:
             return
         picks = assign_holds([self.words[i] for i in order], self.holds, self.rp, self.avoid)
         for i, pick in zip(order, picks, strict=True):
             self.picks.setdefault(i, []).append(pick)
-
-    def _answered(self, call: int, arg: str) -> bool:
-        a = self.answers.get((call, arg))
-        return a is not None and a.hold is None
 
     def _check_index(self, idx: int) -> None:
         if idx >= len(self.words):
@@ -726,18 +722,17 @@ def adjust(
     oy = (dx * r[1] + dy * a[1]) * step
     assert where.mean_mm is not None
     cx, cy = where.mean_mm
-    mean = (round(cx + ox, 2), round(cy + oy, 2))
+    mean = (cx + ox, cy + oy)  # exact: a robot may move its own drawing by the difference
     box = None
     if where.box_mm is not None:
         x, y, w, h = where.box_mm
         nw, nh = w * scale, h * scale
         bx, by = x + w / 2 + ox, y + h / 2 + oy
-        box = (round(bx - nw / 2, 2), round(by - nh / 2, 2), round(nw, 2), round(nh, 2))
+        box = (bx - nw / 2, by - nh / 2, nw, nh)
     path = None
     if where.path_mm is not None:
         path = [
-            (round(cx + (px - cx) * scale + ox, 2), round(cy + (py - cy) * scale + oy, 2))
-            for px, py in where.path_mm
+            (cx + (px - cx) * scale + ox, cy + (py - cy) * scale + oy) for px, py in where.path_mm
         ]
     ev: dict[str, Any] = {
         "dx": dx,

@@ -65,9 +65,10 @@ def test_agent_mistakes_come_back_as_call_errors(clients):
     c = clients("arm-table")
     with pytest.raises(CallError, match="unknown tool 'fly'"):
         c.resolve({"words": [], "calls": [{"name": "fly", "args": {}}]})
-    bad_index = {"object": {"last": True}, "place": {"deixis": "here", "word_index": 4}}
+    bad_index = {"object": {"label": "red"}, "place": {"deixis": "here", "word_index": 4}}
+    red = {"id": "red", "label": "red", "box_mm": [10, 10, 50, 50]}
     with pytest.raises(RequestError, match="past the last word"):
-        c.resolve({"words": [], "calls": [{"name": "move", "args": bad_index}]})
+        c.resolve({"words": [], "things": [red], "calls": [{"name": "move", "args": bad_index}]})
     assert c.over_mcp  # an agent's mistake is not an MCP failure
 
 
