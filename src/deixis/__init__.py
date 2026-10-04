@@ -10,7 +10,8 @@ from deixis.geometry import Box, Point, Polyline
 from deixis.profile import Profile, load_profile
 from deixis.scene import Thing
 from deixis.schema import schemas
-from deixis.types import Hold, Word
+from deixis.tracker import Tracker, track
+from deixis.types import Hold, Sample, Word
 from deixis.where import Answer, Ask, Size, Where
 
 __version__ = "0.1.0"
@@ -23,8 +24,10 @@ __all__ = [
     "Point",
     "Polyline",
     "Profile",
+    "Sample",
     "Size",
     "Thing",
+    "Tracker",
     "Transform",
     "Where",
     "Word",
@@ -32,4 +35,5 @@ __all__ = [
     "fit_transform",
     "load_profile",
     "schemas",
+    "track",
 ]

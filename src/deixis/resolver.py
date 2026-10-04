@@ -25,10 +25,8 @@ from dataclasses import dataclass, field
 from typing import Literal
 
 from deixis.geometry import Point
-from deixis.types import Hold, Word
+from deixis.types import Hold, SpanKind, Word
 from deixis.where import Where, ask_text
-
-SpanKind = Literal["pinch", "two_hands"]
 
 
 @dataclass(frozen=True)
