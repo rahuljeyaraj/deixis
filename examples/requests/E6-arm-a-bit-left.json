@@ -1,0 +1,137 @@
+{
+ "profile": "arm-table",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "move",
+    "t0": 8.0,
+    "t1": 8.2
+   },
+   {
+    "text": "it",
+    "t0": 8.2,
+    "t1": 8.3
+   },
+   {
+    "text": "a",
+    "t0": 8.3,
+    "t1": 8.4
+   },
+   {
+    "text": "bit",
+    "t0": 8.4,
+    "t1": 8.6
+   },
+   {
+    "text": "left",
+    "t0": 8.6,
+    "t1": 8.9
+   }
+  ],
+  "things": [
+   {
+    "id": "red",
+    "label": "red block",
+    "box_mm": [
+     125,
+     225,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "red"
+    },
+    "height_mm": 50,
+    "t": 1
+   },
+   {
+    "id": "yellow",
+    "label": "yellow block",
+    "box_mm": [
+     215,
+     225,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "yellow"
+    },
+    "height_mm": 50,
+    "t": 2
+   },
+   {
+    "id": "green",
+    "label": "green block",
+    "box_mm": [
+     300,
+     100,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "green"
+    },
+    "height_mm": 50,
+    "t": 3
+   },
+   {
+    "id": "blue",
+    "label": "blue block",
+    "box_mm": [
+     420,
+     260,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "blue"
+    },
+    "height_mm": 50,
+    "t": 4
+   }
+  ],
+  "calls": [
+   {
+    "name": "adjust",
+    "args": {
+     "dx": -1
+    }
+   }
+  ],
+  "context": {
+   "previous": {
+    "place": {
+     "version": "1.0",
+     "frame": "table",
+     "kind": "box",
+     "mean_mm": [
+      480.0,
+      90.0
+     ],
+     "box_mm": [
+      455.0,
+      65.0,
+      50.0,
+      50.0
+     ],
+     "cov_mm2": [
+      [
+       25.0,
+       0.0
+      ],
+      [
+       0.0,
+       25.0
+      ]
+     ],
+     "source": "gesture",
+     "evidence": {
+      "rule": "k_in_order",
+      "box_from": "object"
+     }
+    }
+   }
+  }
+ }
+}

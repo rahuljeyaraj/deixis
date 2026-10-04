@@ -1,0 +1,958 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rahuljeyaraj/deixis/blob/main/schema/request-1.json",
+  "$defs": {
+    "Answer": {
+      "description": "A reply to an `Ask`, or an argument already resolved, sent back with the request.\n\nExactly one of: `candidate` (an index into the earlier Ask's candidates, which the robot\nre-sends as `where` or `thing`), `where`, `size`, `thing` (a thing's id) or `hold` (the\nperson pointed again; it replaces the pick for the pointing words in this argument).",
+      "properties": {
+        "version": {
+          "default": "1.0",
+          "description": "Schema version, 1.x.",
+          "title": "Version",
+          "type": "string"
+        },
+        "call": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Call",
+          "type": "integer"
+        },
+        "arg": {
+          "minLength": 1,
+          "title": "Arg",
+          "type": "string"
+        },
+        "candidate": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Candidate"
+        },
+        "where": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Where"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "size": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Size"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "thing": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thing"
+        },
+        "hold": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Hold"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "arg"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "Context": {
+      "properties": {
+        "last_thing": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The id 'it' means, if the robot knows better than 'newest'.",
+          "title": "Last Thing"
+        },
+        "previous": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Where"
+              },
+              {
+                "$ref": "#/$defs/Size"
+              }
+            ]
+          },
+          "description": "What is being previewed, for adjust: {\"place\": Where, \"size\": Size}.",
+          "title": "Previous",
+          "type": "object"
+        }
+      },
+      "title": "Context",
+      "type": "object"
+    },
+    "Hold": {
+      "description": "A period when a tracked point (fingertip, foot) stayed still in a pointing pose.",
+      "properties": {
+        "t0": {
+          "title": "T0",
+          "type": "number"
+        },
+        "t1": {
+          "title": "T1",
+          "type": "number"
+        },
+        "mean": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Mean",
+          "type": "array"
+        },
+        "spread": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Spread",
+          "type": "array"
+        },
+        "frame": {
+          "default": "",
+          "title": "Frame",
+          "type": "string"
+        },
+        "source": {
+          "default": "pointer",
+          "title": "Source",
+          "type": "string"
+        },
+        "cov_mm2": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                },
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cov Mm2"
+        }
+      },
+      "required": [
+        "t0",
+        "t1",
+        "mean",
+        "spread"
+      ],
+      "title": "Hold",
+      "type": "object"
+    },
+    "RawCall": {
+      "additionalProperties": false,
+      "description": "One tool call as the agent wrote it: a name and raw JSON arguments.",
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "args": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Args"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "RawCall",
+      "type": "object"
+    },
+    "Sample": {
+      "description": "One pointer reading, already in the robot's frame (mm): a fingertip, the feet's\nmidpoint, a gaze point, a laser spot. One per camera frame.",
+      "properties": {
+        "t": {
+          "title": "T",
+          "type": "number"
+        },
+        "point": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Point"
+        },
+        "pointing": {
+          "default": true,
+          "title": "Pointing",
+          "type": "boolean"
+        },
+        "span": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                },
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Span"
+        },
+        "span_kind": {
+          "anyOf": [
+            {
+              "enum": [
+                "pinch",
+                "two_hands"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Span Kind"
+        },
+        "cov_mm2": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                },
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cov Mm2"
+        }
+      },
+      "required": [
+        "t"
+      ],
+      "title": "Sample",
+      "type": "object"
+    },
+    "Size": {
+      "description": "A size: it sets the larger side of the thing's box.",
+      "properties": {
+        "version": {
+          "default": "1.0",
+          "description": "Schema version, 1.x.",
+          "title": "Version",
+          "type": "string"
+        },
+        "mm": {
+          "description": "The larger side of the thing's box, mm.",
+          "exclusiveMinimum": 0,
+          "title": "Mm",
+          "type": "number"
+        },
+        "side": {
+          "const": "larger",
+          "default": "larger",
+          "title": "Side",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "gesture",
+            "verbal_preset",
+            "object_ref",
+            "default",
+            "adjust"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "required": [
+        "mm",
+        "source"
+      ],
+      "title": "Size",
+      "type": "object"
+    },
+    "SpanHold": {
+      "description": "A steady size gesture: the span stayed about the same for a while.",
+      "properties": {
+        "t0": {
+          "title": "T0",
+          "type": "number"
+        },
+        "t1": {
+          "title": "T1",
+          "type": "number"
+        },
+        "span_mm": {
+          "title": "Span Mm",
+          "type": "number"
+        },
+        "kind": {
+          "enum": [
+            "pinch",
+            "two_hands"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "center": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Center",
+          "type": "array"
+        }
+      },
+      "required": [
+        "t0",
+        "t1",
+        "span_mm",
+        "kind",
+        "center"
+      ],
+      "title": "SpanHold",
+      "type": "object"
+    },
+    "Thing": {
+      "description": "Something in the scene, reported by the robot side.",
+      "properties": {
+        "version": {
+          "default": "1.0",
+          "description": "Schema version, 1.x.",
+          "title": "Version",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique, chosen by the robot side.",
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "What it is: 'house', 'red block'.",
+          "title": "Label"
+        },
+        "box_mm": {
+          "description": "Its footprint in the frame: x, y, w, h.",
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Box Mm",
+          "type": "array"
+        },
+        "kind": {
+          "default": "object",
+          "description": "Free text for the robot.",
+          "title": "Kind",
+          "type": "string"
+        },
+        "attrs": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "e.g. {\"color\": \"blue\"}.",
+          "title": "Attrs",
+          "type": "object"
+        },
+        "t": {
+          "default": 0.0,
+          "description": "When it was added or last moved, s.",
+          "title": "T",
+          "type": "number"
+        },
+        "height_mm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Its height, for 'on that'.",
+          "title": "Height Mm"
+        },
+        "selectable": {
+          "default": true,
+          "description": "false: pointing and 'it' skip it (text labels, arrows).",
+          "title": "Selectable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "box_mm"
+      ],
+      "title": "Thing",
+      "type": "object"
+    },
+    "Where": {
+      "description": "A place in the robot's frame: a point, a box or a path.",
+      "properties": {
+        "version": {
+          "default": "1.0",
+          "description": "Schema version, 1.x.",
+          "title": "Version",
+          "type": "string"
+        },
+        "frame": {
+          "description": "The profile's frame; every coordinate is in it.",
+          "title": "Frame",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "point",
+            "box",
+            "path"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "mean_mm": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The point, or the centre of a box, or the mean of a path's points. Always set in output; filled in for boxes and paths.",
+          "title": "Mean Mm"
+        },
+        "box_mm": {
+          "anyOf": [
+            {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "x, y, w, h with (x, y) the minimum corner.",
+          "title": "Box Mm"
+        },
+        "path_mm": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Two or more points.",
+          "title": "Path Mm"
+        },
+        "z_mm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Height above the frame's surface, when known ('on that').",
+          "title": "Z Mm"
+        },
+        "cov_mm2": {
+          "default": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "description": "Uncertainty of mean_mm, mm^2.",
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            }
+          ],
+          "title": "Cov Mm2",
+          "type": "array"
+        },
+        "thing": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The thing's id, for an object.",
+          "title": "Thing"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The thing's label, for an object.",
+          "title": "Label"
+        },
+        "source": {
+          "enum": [
+            "gesture",
+            "gesture+vlm",
+            "vlm",
+            "verbal_preset",
+            "object_ref",
+            "geometry",
+            "default",
+            "adjust"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "description": "How it was found, e.g. {\"rule\": \"nearest\", \"word\": \"here\", \"hold_t\": [11.9, 12.2]}.",
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "required": [
+        "frame",
+        "kind",
+        "source"
+      ],
+      "title": "Where",
+      "type": "object"
+    },
+    "Word": {
+      "description": "One recognised word with its start and end time.",
+      "properties": {
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "t0": {
+          "title": "T0",
+          "type": "number"
+        },
+        "t1": {
+          "title": "T1",
+          "type": "number"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        }
+      },
+      "required": [
+        "text",
+        "t0",
+        "t1"
+      ],
+      "title": "Word",
+      "type": "object"
+    }
+  },
+  "description": "Everything for one utterance (plan 4.5).",
+  "properties": {
+    "version": {
+      "default": "1.0",
+      "description": "Schema version, 1.x.",
+      "title": "Version",
+      "type": "string"
+    },
+    "words": {
+      "description": "This utterance, in order.",
+      "items": {
+        "$ref": "#/$defs/Word"
+      },
+      "title": "Words",
+      "type": "array"
+    },
+    "samples": {
+      "description": "Pointer samples.",
+      "items": {
+        "$ref": "#/$defs/Sample"
+      },
+      "title": "Samples",
+      "type": "array"
+    },
+    "holds": {
+      "description": "Holds made elsewhere (clicks).",
+      "items": {
+        "$ref": "#/$defs/Hold"
+      },
+      "title": "Holds",
+      "type": "array"
+    },
+    "spans": {
+      "description": "Size gestures made elsewhere.",
+      "items": {
+        "$ref": "#/$defs/SpanHold"
+      },
+      "title": "Spans",
+      "type": "array"
+    },
+    "things": {
+      "description": "The scene.",
+      "items": {
+        "$ref": "#/$defs/Thing"
+      },
+      "title": "Things",
+      "type": "array"
+    },
+    "calls": {
+      "description": "The agent's tool calls.",
+      "items": {
+        "$ref": "#/$defs/RawCall"
+      },
+      "title": "Calls",
+      "type": "array"
+    },
+    "context": {
+      "$ref": "#/$defs/Context"
+    },
+    "answers": {
+      "description": "Replies to an earlier Ask.",
+      "items": {
+        "$ref": "#/$defs/Answer"
+      },
+      "title": "Answers",
+      "type": "array"
+    },
+    "speech": {
+      "anyOf": [
+        {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Utterance start and end, if the words are missing or cut.",
+      "title": "Speech"
+    },
+    "only": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Resolve only this call; the others still take part in matching words to holds (for robots that act on one call before resolving the next).",
+      "title": "Only"
+    }
+  },
+  "title": "Request",
+  "type": "object"
+}

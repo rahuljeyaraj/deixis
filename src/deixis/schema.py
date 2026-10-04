@@ -20,6 +20,7 @@ SCHEMA_URL = "https://github.com/rahuljeyaraj/deixis/blob/main/schema/"
 
 
 def _models() -> dict[str, type[BaseModel]]:
+    from deixis.api import Request, Response
     from deixis.frames import Transform
     from deixis.profile import Profile
     from deixis.scene import Thing
@@ -31,6 +32,8 @@ def _models() -> dict[str, type[BaseModel]]:
         "answer": Answer,
         "thing": Thing,
         "transform": Transform,
+        "request": Request,
+        "response": Response,
         "profile": Profile,
     }
     return models

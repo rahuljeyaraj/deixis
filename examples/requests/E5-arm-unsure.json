@@ -1,0 +1,130 @@
+{
+ "profile": "arm-table",
+ "request": {
+  "version": "1.0",
+  "words": [
+   {
+    "text": "put",
+    "t0": 2.0,
+    "t1": 2.2
+   },
+   {
+    "text": "that",
+    "t0": 2.2,
+    "t1": 2.5
+   },
+   {
+    "text": "here",
+    "t0": 3.4,
+    "t1": 3.7
+   }
+  ],
+  "holds": [
+   {
+    "t0": 1.8,
+    "t1": 2.6,
+    "mean": [
+     195,
+     250
+    ],
+    "spread": [
+     1,
+     1
+    ],
+    "frame": "table",
+    "source": "finger"
+   },
+   {
+    "t0": 3.2,
+    "t1": 3.9,
+    "mean": [
+     480,
+     90
+    ],
+    "spread": [
+     1,
+     1
+    ],
+    "frame": "table",
+    "source": "finger"
+   }
+  ],
+  "things": [
+   {
+    "id": "red",
+    "label": "red block",
+    "box_mm": [
+     125,
+     225,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "red"
+    },
+    "height_mm": 50,
+    "t": 1
+   },
+   {
+    "id": "yellow",
+    "label": "yellow block",
+    "box_mm": [
+     215,
+     225,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "yellow"
+    },
+    "height_mm": 50,
+    "t": 2
+   },
+   {
+    "id": "green",
+    "label": "green block",
+    "box_mm": [
+     300,
+     100,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "green"
+    },
+    "height_mm": 50,
+    "t": 3
+   },
+   {
+    "id": "blue",
+    "label": "blue block",
+    "box_mm": [
+     420,
+     260,
+     50,
+     50
+    ],
+    "attrs": {
+     "color": "blue"
+    },
+    "height_mm": 50,
+    "t": 4
+   }
+  ],
+  "calls": [
+   {
+    "name": "move",
+    "args": {
+     "object": {
+      "deixis": "that",
+      "word_index": 1
+     },
+     "place": {
+      "deixis": "here",
+      "word_index": 2
+     }
+    }
+   }
+  ]
+ }
+}

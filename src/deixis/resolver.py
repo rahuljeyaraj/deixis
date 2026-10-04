@@ -82,6 +82,7 @@ class Pick:
     word: Word | None = None
     n_candidates: int = 1
     notes: list[str] = field(default_factory=list)
+    confidence: float = 1.0  # best / (best + second) of the time likelihoods
 
 
 def _wmid(w: Word) -> float:
@@ -144,9 +145,12 @@ def pick_hold(
     ranked = _ranked(word, cands, avoid)
     usable = [h for h in ranked if h not in (avoid or set())] or ranked
     best = usable[0]
+    confidence = 1.0
     if len(usable) >= 2:
         second = usable[1]
         l1, l2 = _likelihood(best, word, p), _likelihood(second, word, p)
+        if l1 + l2 > 0:
+            confidence = l1 / (l1 + l2)
         far = math.dist(_pos(best), _pos(second)) > p.same_place_mm
         if far and l2 > 0 and l1 / l2 < p.ambiguity_ratio:
             return Ask(
@@ -158,7 +162,7 @@ def pick_hold(
     assert isinstance(best, Hold)
     if max(best.spread) > p.max_spread_mm:
         return Ask("unsteady", p.ask("unsteady"), (best,), word=word)
-    return Pick(best, "nearest", word, len(cands))
+    return Pick(best, "nearest", word, len(cands), confidence=round(confidence, 3))
 
 
 def assign_holds(
@@ -256,7 +260,7 @@ def hold_where(pick: Pick, frame: str | None = None, p: ResolverParams | None = 
     else:
         sx = math.hypot(h.spread[0], p.base_sigma_mm)
         sy = math.hypot(h.spread[1], p.base_sigma_mm)
-        cov = ((sx * sx, 0.0), (0.0, sy * sy))
+        cov = ((round(sx * sx, 4), 0.0), (0.0, round(sy * sy, 4)))
     ev: dict[str, object] = {
         "rule": pick.rule,
         "hold_t": [round(h.t0, 3), round(h.t1, 3)],
@@ -272,5 +276,6 @@ def hold_where(pick: Pick, frame: str | None = None, p: ResolverParams | None = 
         mean_mm=(round(h.mean[0], 2), round(h.mean[1], 2)),
         cov_mm2=cov,
         source="gesture",
+        confidence=pick.confidence,
         evidence=ev,
     )

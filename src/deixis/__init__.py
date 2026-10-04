@@ -6,6 +6,7 @@ output. Everything robot-specific comes from the robot's `Profile`.
 """
 
 from deixis.actions import Action, Call, CallError, Param, check_call, parse_call, tools_for_agent
+from deixis.api import Request, Response, adjust, adjust_size, resolve
 from deixis.frames import Transform, fit_transform
 from deixis.geometry import Box, Point, Polyline
 from deixis.profile import Profile, load_profile
@@ -29,6 +30,8 @@ __all__ = [
     "Point",
     "Polyline",
     "Profile",
+    "Request",
+    "Response",
     "Sample",
     "Size",
     "Thing",
@@ -37,10 +40,13 @@ __all__ = [
     "Where",
     "Word",
     "__version__",
+    "adjust",
+    "adjust_size",
     "check_call",
     "fit_transform",
     "load_profile",
     "parse_call",
+    "resolve",
     "schemas",
     "tools_for_agent",
     "track",
