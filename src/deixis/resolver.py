@@ -253,8 +253,12 @@ def hold_where(pick: Pick, frame: str | None = None, p: ResolverParams | None = 
     h = pick.hold
     assert isinstance(h, Hold)
     frame = h.frame if frame is None else frame
-    sx = math.hypot(h.spread[0], p.base_sigma_mm)
-    sy = math.hypot(h.spread[1], p.base_sigma_mm)
+    if h.cov_mm2 is not None:  # the source knows its own uncertainty (gaze, a far ray)
+        cov = h.cov_mm2
+    else:
+        sx = math.hypot(h.spread[0], p.base_sigma_mm)
+        sy = math.hypot(h.spread[1], p.base_sigma_mm)
+        cov = ((sx * sx, 0.0), (0.0, sy * sy))
     ev: dict[str, object] = {
         "rule": pick.rule,
         "hold_t": [round(h.t0, 3), round(h.t1, 3)],
@@ -268,7 +272,7 @@ def hold_where(pick: Pick, frame: str | None = None, p: ResolverParams | None = 
         frame=frame,
         kind="point",
         mean_mm=(round(h.mean[0], 2), round(h.mean[1], 2)),
-        cov_mm2=((sx * sx, 0.0), (0.0, sy * sy)),
+        cov_mm2=cov,
         source="gesture",
         evidence=ev,
     )

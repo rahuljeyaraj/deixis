@@ -1,0 +1,463 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rahuljeyaraj/deixis/blob/main/schema/answer-1.json",
+  "$defs": {
+    "Hold": {
+      "description": "A period when a tracked point (fingertip, foot) stayed still in a pointing pose.",
+      "properties": {
+        "t0": {
+          "title": "T0",
+          "type": "number"
+        },
+        "t1": {
+          "title": "T1",
+          "type": "number"
+        },
+        "mean": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Mean",
+          "type": "array"
+        },
+        "spread": {
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Spread",
+          "type": "array"
+        },
+        "frame": {
+          "default": "",
+          "title": "Frame",
+          "type": "string"
+        },
+        "source": {
+          "default": "pointer",
+          "title": "Source",
+          "type": "string"
+        },
+        "cov_mm2": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                },
+                {
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cov Mm2"
+        }
+      },
+      "required": [
+        "t0",
+        "t1",
+        "mean",
+        "spread"
+      ],
+      "title": "Hold",
+      "type": "object"
+    },
+    "Size": {
+      "description": "A size: it sets the larger side of the thing's box.",
+      "properties": {
+        "version": {
+          "default": "1.0",
+          "description": "Schema version, 1.x.",
+          "title": "Version",
+          "type": "string"
+        },
+        "mm": {
+          "description": "The larger side of the thing's box, mm.",
+          "exclusiveMinimum": 0,
+          "title": "Mm",
+          "type": "number"
+        },
+        "side": {
+          "const": "larger",
+          "default": "larger",
+          "title": "Side",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "gesture",
+            "verbal_preset",
+            "object_ref",
+            "default",
+            "adjust"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "required": [
+        "mm",
+        "source"
+      ],
+      "title": "Size",
+      "type": "object"
+    },
+    "Where": {
+      "description": "A place in the robot's frame: a point, a box or a path.",
+      "properties": {
+        "version": {
+          "default": "1.0",
+          "description": "Schema version, 1.x.",
+          "title": "Version",
+          "type": "string"
+        },
+        "frame": {
+          "description": "The profile's frame; every coordinate is in it.",
+          "title": "Frame",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "point",
+            "box",
+            "path"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "mean_mm": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The point, or the centre of a box, or the mean of a path's points. Always set in output; filled in for boxes and paths.",
+          "title": "Mean Mm"
+        },
+        "box_mm": {
+          "anyOf": [
+            {
+              "maxItems": 4,
+              "minItems": 4,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "x, y, w, h with (x, y) the minimum corner.",
+          "title": "Box Mm"
+        },
+        "path_mm": {
+          "anyOf": [
+            {
+              "items": {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Two or more points.",
+          "title": "Path Mm"
+        },
+        "z_mm": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Height above the frame's surface, when known ('on that').",
+          "title": "Z Mm"
+        },
+        "cov_mm2": {
+          "default": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "description": "Uncertainty of mean_mm, mm^2.",
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            }
+          ],
+          "title": "Cov Mm2",
+          "type": "array"
+        },
+        "thing": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The thing's id, for an object.",
+          "title": "Thing"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The thing's label, for an object.",
+          "title": "Label"
+        },
+        "source": {
+          "enum": [
+            "gesture",
+            "gesture+vlm",
+            "vlm",
+            "verbal_preset",
+            "object_ref",
+            "geometry",
+            "default",
+            "adjust"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "confidence": {
+          "default": 1.0,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "evidence": {
+          "additionalProperties": true,
+          "description": "How it was found, e.g. {\"rule\": \"nearest\", \"word\": \"here\", \"hold_t\": [11.9, 12.2]}.",
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "required": [
+        "frame",
+        "kind",
+        "source"
+      ],
+      "title": "Where",
+      "type": "object"
+    }
+  },
+  "description": "A reply to an `Ask`, or an argument already resolved, sent back with the request.\n\nExactly one of: `candidate` (an index into the earlier Ask's candidates, which the robot\nre-sends as `where` or `thing`), `where`, `size`, `thing` (a thing's id) or `hold` (the\nperson pointed again; it replaces the pick for the pointing words in this argument).",
+  "properties": {
+    "version": {
+      "default": "1.0",
+      "description": "Schema version, 1.x.",
+      "title": "Version",
+      "type": "string"
+    },
+    "call": {
+      "default": 0,
+      "minimum": 0,
+      "title": "Call",
+      "type": "integer"
+    },
+    "arg": {
+      "minLength": 1,
+      "title": "Arg",
+      "type": "string"
+    },
+    "candidate": {
+      "anyOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Candidate"
+    },
+    "where": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Where"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "size": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Size"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "thing": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Thing"
+    },
+    "hold": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Hold"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "arg"
+  ],
+  "title": "Answer",
+  "type": "object"
+}

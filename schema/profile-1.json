@@ -1,0 +1,632 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rahuljeyaraj/deixis/blob/main/schema/profile-1.json",
+  "$defs": {
+    "Action": {
+      "additionalProperties": false,
+      "description": "Something the robot can do, as the agent sees it.",
+      "properties": {
+        "name": {
+          "description": "e.g. 'move'; may be 'robot.action' (two robots).",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "params": {
+          "items": {
+            "$ref": "#/$defs/Param"
+          },
+          "title": "Params",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "Action",
+      "type": "object"
+    },
+    "AdjustSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "step_mm": {
+          "default": 5.0,
+          "description": "One 'a bit' step.",
+          "exclusiveMinimum": 0,
+          "title": "Step Mm",
+          "type": "number"
+        }
+      },
+      "title": "AdjustSettings",
+      "type": "object"
+    },
+    "FilterSettings": {
+      "additionalProperties": false,
+      "description": "One-Euro smoothing of the pointer (Casiez et al., CHI 2012).",
+      "properties": {
+        "min_cutoff": {
+          "default": 1.0,
+          "exclusiveMinimum": 0,
+          "title": "Min Cutoff",
+          "type": "number"
+        },
+        "beta": {
+          "default": 0.02,
+          "minimum": 0,
+          "title": "Beta",
+          "type": "number"
+        },
+        "d_cutoff": {
+          "default": 1.0,
+          "exclusiveMinimum": 0,
+          "title": "D Cutoff",
+          "type": "number"
+        }
+      },
+      "title": "FilterSettings",
+      "type": "object"
+    },
+    "HoldSettings": {
+      "additionalProperties": false,
+      "description": "When a pointer counts as held still (see `deixis.holds.HoldParams`).",
+      "properties": {
+        "speed_enter_mm_s": {
+          "default": 20.0,
+          "exclusiveMinimum": 0,
+          "title": "Speed Enter Mm S",
+          "type": "number"
+        },
+        "speed_exit_mm_s": {
+          "default": 30.0,
+          "exclusiveMinimum": 0,
+          "title": "Speed Exit Mm S",
+          "type": "number"
+        },
+        "min_duration_s": {
+          "default": 0.15,
+          "minimum": 0,
+          "title": "Min Duration S",
+          "type": "number"
+        },
+        "speed_window_s": {
+          "default": 0.1,
+          "exclusiveMinimum": 0,
+          "title": "Speed Window S",
+          "type": "number"
+        },
+        "max_gap_s": {
+          "default": 0.12,
+          "minimum": 0,
+          "title": "Max Gap S",
+          "type": "number"
+        },
+        "require_pointing": {
+          "default": true,
+          "title": "Require Pointing",
+          "type": "boolean"
+        },
+        "history_s": {
+          "default": 120.0,
+          "exclusiveMinimum": 0,
+          "title": "History S",
+          "type": "number"
+        }
+      },
+      "title": "HoldSettings",
+      "type": "object"
+    },
+    "Param": {
+      "additionalProperties": false,
+      "description": "One argument of an action.",
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "place",
+            "object",
+            "size",
+            "text",
+            "choice",
+            "steps",
+            "scale",
+            "flag",
+            "list"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "want": {
+          "default": "point",
+          "description": "place only: the shape the robot needs (point, box, path).",
+          "enum": [
+            "point",
+            "box",
+            "path"
+          ],
+          "title": "Want",
+          "type": "string"
+        },
+        "size_from": {
+          "anyOf": [
+            {
+              "enum": [
+                "size_param",
+                "object",
+                "default"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "place with want=box: where the box size comes from. Default: the action's size parameter if it has one, else the profile's default size.",
+          "title": "Size From"
+        },
+        "allow_point": {
+          "default": false,
+          "description": "object only: when nothing is near the pointed spot, give the point itself instead of asking (an arrow from a thing or from an empty spot).",
+          "title": "Allow Point",
+          "type": "boolean"
+        },
+        "required": {
+          "default": false,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "choices": {
+          "description": "choice only.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Choices",
+          "type": "array"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "type"
+      ],
+      "title": "Param",
+      "type": "object"
+    },
+    "PointerSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "default": "pointer",
+          "description": "Label for holds: finger, feet, gaze, ...",
+          "title": "Source",
+          "type": "string"
+        },
+        "filter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FilterSettings"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hold": {
+          "$ref": "#/$defs/HoldSettings"
+        },
+        "base_sigma_mm": {
+          "default": 1.5,
+          "description": "Added to a hold's spread.",
+          "minimum": 0,
+          "title": "Base Sigma Mm",
+          "type": "number"
+        },
+        "max_spread_mm": {
+          "default": 6.0,
+          "description": "More wander: ask 'unsteady'.",
+          "exclusiveMinimum": 0,
+          "title": "Max Spread Mm",
+          "type": "number"
+        },
+        "same_place_mm": {
+          "default": 10.0,
+          "description": "Closer holds: one place.",
+          "minimum": 0,
+          "title": "Same Place Mm",
+          "type": "number"
+        }
+      },
+      "title": "PointerSettings",
+      "type": "object"
+    },
+    "SceneSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "near_mm": {
+          "default": 20.0,
+          "description": "'that one': things this close.",
+          "minimum": 0,
+          "title": "Near Mm",
+          "type": "number"
+        },
+        "ambiguous_mm": {
+          "default": 6.0,
+          "description": "Two this close: ask.",
+          "minimum": 0,
+          "title": "Ambiguous Mm",
+          "type": "number"
+        },
+        "gap_mm": {
+          "default": 10.0,
+          "description": "The gap for 'next to'.",
+          "minimum": 0,
+          "title": "Gap Mm",
+          "type": "number"
+        },
+        "inside_fill": {
+          "default": 0.7,
+          "exclusiveMinimum": 0,
+          "maximum": 1,
+          "title": "Inside Fill",
+          "type": "number"
+        },
+        "empty_margin_mm": {
+          "default": 3.0,
+          "minimum": 0,
+          "title": "Empty Margin Mm",
+          "type": "number"
+        },
+        "grid_mm": {
+          "default": 1.0,
+          "description": "Grid step for empty space.",
+          "exclusiveMinimum": 0,
+          "title": "Grid Mm",
+          "type": "number"
+        },
+        "label_ties": {
+          "default": "most_recent",
+          "enum": [
+            "most_recent",
+            "ask"
+          ],
+          "title": "Label Ties",
+          "type": "string"
+        }
+      },
+      "title": "SceneSettings",
+      "type": "object"
+    },
+    "SizeSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "default_mm": {
+          "default": 40.0,
+          "description": "When no size was said; also a point's box (F12).",
+          "exclusiveMinimum": 0,
+          "title": "Default Mm",
+          "type": "number"
+        },
+        "presets": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "description": "Size words in mm; null = the whole area.",
+          "title": "Presets",
+          "type": "object"
+        },
+        "synonyms": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Extra words for the presets, e.g. 'huge' -> 'big'.",
+          "title": "Synonyms",
+          "type": "object"
+        },
+        "min_mm": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Min Mm",
+          "type": "number"
+        },
+        "max_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Mm"
+        }
+      },
+      "title": "SizeSettings",
+      "type": "object"
+    },
+    "SpanSettings": {
+      "additionalProperties": false,
+      "description": "Steady size gestures (\"this big\"); see `deixis.spans.SpanParams`.",
+      "properties": {
+        "max_rate_mm_s": {
+          "default": 25.0,
+          "exclusiveMinimum": 0,
+          "title": "Max Rate Mm S",
+          "type": "number"
+        },
+        "window_s": {
+          "default": 0.1,
+          "exclusiveMinimum": 0,
+          "title": "Window S",
+          "type": "number"
+        },
+        "min_duration_s": {
+          "default": 0.2,
+          "minimum": 0,
+          "title": "Min Duration S",
+          "type": "number"
+        },
+        "min_span_mm": {
+          "default": 8.0,
+          "minimum": 0,
+          "title": "Min Span Mm",
+          "type": "number"
+        },
+        "max_gap_s": {
+          "default": 0.12,
+          "minimum": 0,
+          "title": "Max Gap S",
+          "type": "number"
+        },
+        "history_s": {
+          "default": 30.0,
+          "exclusiveMinimum": 0,
+          "title": "History S",
+          "type": "number"
+        }
+      },
+      "title": "SpanSettings",
+      "type": "object"
+    },
+    "TimingSettings": {
+      "additionalProperties": false,
+      "description": "How words are paired with holds (plan 4.3, LR 3.4).",
+      "properties": {
+        "before_s": {
+          "default": 1.5,
+          "minimum": 0,
+          "title": "Before S",
+          "type": "number"
+        },
+        "after_s": {
+          "default": 0.5,
+          "minimum": 0,
+          "title": "After S",
+          "type": "number"
+        },
+        "no_word_before_s": {
+          "default": 2.0,
+          "minimum": 0,
+          "title": "No Word Before S",
+          "type": "number"
+        },
+        "time_sigma_s": {
+          "default": 0.6,
+          "exclusiveMinimum": 0,
+          "title": "Time Sigma S",
+          "type": "number"
+        },
+        "ambiguity_ratio": {
+          "default": 2.0,
+          "minimum": 1,
+          "title": "Ambiguity Ratio",
+          "type": "number"
+        },
+        "size_overlap": {
+          "default": 0.5,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Size Overlap",
+          "type": "number"
+        }
+      },
+      "title": "TimingSettings",
+      "type": "object"
+    },
+    "Viewer": {
+      "additionalProperties": false,
+      "description": "The person's right and away-from-them, as unit vectors along the frame's axes.",
+      "properties": {
+        "right": {
+          "default": [
+            1.0,
+            0.0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Right",
+          "type": "array"
+        },
+        "away": {
+          "default": [
+            0.0,
+            1.0
+          ],
+          "maxItems": 2,
+          "minItems": 2,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "Away",
+          "type": "array"
+        }
+      },
+      "title": "Viewer",
+      "type": "object"
+    },
+    "WordSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "demonstratives": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Demonstratives",
+          "type": "array"
+        }
+      },
+      "title": "WordSettings",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "A robot's profile (plan 4.3).",
+  "properties": {
+    "version": {
+      "default": "1.0",
+      "title": "Version",
+      "type": "string"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "frame": {
+      "description": "The frame of every position.",
+      "minLength": 1,
+      "title": "Frame",
+      "type": "string"
+    },
+    "area_mm": {
+      "description": "Where the robot can act: x, y, w, h.",
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "title": "Area Mm",
+      "type": "array"
+    },
+    "view": {
+      "default": "page",
+      "enum": [
+        "page",
+        "surface",
+        "ground"
+      ],
+      "title": "View",
+      "type": "string"
+    },
+    "viewer": {
+      "$ref": "#/$defs/Viewer"
+    },
+    "pointer": {
+      "$ref": "#/$defs/PointerSettings"
+    },
+    "spans": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SpanSettings"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "null = no \"this big\"."
+    },
+    "timing": {
+      "$ref": "#/$defs/TimingSettings"
+    },
+    "sizes": {
+      "$ref": "#/$defs/SizeSettings"
+    },
+    "scene": {
+      "$ref": "#/$defs/SceneSettings"
+    },
+    "adjust": {
+      "$ref": "#/$defs/AdjustSettings"
+    },
+    "outside": {
+      "default": "keep",
+      "description": "A place outside the area: keep it (flagged) or ask.",
+      "enum": [
+        "keep",
+        "ask"
+      ],
+      "title": "Outside",
+      "type": "string"
+    },
+    "asks": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Question texts by reason; defaults fill the rest.",
+      "title": "Asks",
+      "type": "object"
+    },
+    "words": {
+      "$ref": "#/$defs/WordSettings"
+    },
+    "actions": {
+      "items": {
+        "$ref": "#/$defs/Action"
+      },
+      "title": "Actions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "frame",
+    "area_mm"
+  ],
+  "title": "Profile",
+  "type": "object"
+}

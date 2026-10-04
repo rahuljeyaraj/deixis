@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rahuljeyaraj/deixis/blob/main/schema/size-1.json",
+  "description": "A size: it sets the larger side of the thing's box.",
+  "properties": {
+    "version": {
+      "default": "1.0",
+      "description": "Schema version, 1.x.",
+      "title": "Version",
+      "type": "string"
+    },
+    "mm": {
+      "description": "The larger side of the thing's box, mm.",
+      "exclusiveMinimum": 0,
+      "title": "Mm",
+      "type": "number"
+    },
+    "side": {
+      "const": "larger",
+      "default": "larger",
+      "title": "Side",
+      "type": "string"
+    },
+    "source": {
+      "enum": [
+        "gesture",
+        "verbal_preset",
+        "object_ref",
+        "default",
+        "adjust"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "confidence": {
+      "default": 1.0,
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "evidence": {
+      "additionalProperties": true,
+      "title": "Evidence",
+      "type": "object"
+    }
+  },
+  "required": [
+    "mm",
+    "source"
+  ],
+  "title": "Size",
+  "type": "object"
+}

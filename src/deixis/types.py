@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from deixis.geometry import Point
+from deixis.geometry import Cov2, Point
 
 
 @dataclass(frozen=True)
@@ -27,6 +27,7 @@ class Hold:
     spread: Point  # standard deviation in x and y, mm
     frame: str = ""  # the frame named by the profile
     source: str = "pointer"  # e.g. "finger", "feet", "gaze", "click"
+    cov_mm2: Cov2 | None = None  # if set, used instead of the spread plus the base sigma
 
     @property
     def mid(self) -> float:

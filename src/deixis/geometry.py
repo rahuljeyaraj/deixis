@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 Point = tuple[float, float]
 Polyline = list[Point]
+#: A 2x2 covariance in mm^2: ((sxx, sxy), (sxy, syy)).
+Cov2 = tuple[tuple[float, float], tuple[float, float]]
 
 
 @dataclass(frozen=True)
