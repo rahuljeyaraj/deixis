@@ -21,12 +21,14 @@ SCHEMA_URL = "https://github.com/rahuljeyaraj/deixis/blob/main/schema/"
 
 def _models() -> dict[str, type[BaseModel]]:
     from deixis.profile import Profile
+    from deixis.scene import Thing
 
     models: dict[str, type[BaseModel]] = {
         "where": Where,
         "size": Size,
         "ask": Ask,
         "answer": Answer,
+        "thing": Thing,
         "profile": Profile,
     }
     return models

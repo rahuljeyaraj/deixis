@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rahuljeyaraj/deixis/blob/main/schema/thing-1.json",
+  "description": "Something in the scene, reported by the robot side.",
+  "properties": {
+    "version": {
+      "default": "1.0",
+      "description": "Schema version, 1.x.",
+      "title": "Version",
+      "type": "string"
+    },
+    "id": {
+      "description": "Unique, chosen by the robot side.",
+      "minLength": 1,
+      "title": "Id",
+      "type": "string"
+    },
+    "label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "What it is: 'house', 'red block'.",
+      "title": "Label"
+    },
+    "box_mm": {
+      "description": "Its footprint in the frame: x, y, w, h.",
+      "maxItems": 4,
+      "minItems": 4,
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "title": "Box Mm",
+      "type": "array"
+    },
+    "kind": {
+      "default": "object",
+      "description": "Free text for the robot.",
+      "title": "Kind",
+      "type": "string"
+    },
+    "attrs": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "e.g. {\"color\": \"blue\"}.",
+      "title": "Attrs",
+      "type": "object"
+    },
+    "t": {
+      "default": 0.0,
+      "description": "When it was added or last moved, s.",
+      "title": "T",
+      "type": "number"
+    },
+    "height_mm": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Its height, for 'on that'.",
+      "title": "Height Mm"
+    },
+    "selectable": {
+      "default": true,
+      "description": "false: pointing and 'it' skip it (text labels, arrows).",
+      "title": "Selectable",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "box_mm"
+  ],
+  "title": "Thing",
+  "type": "object"
+}
