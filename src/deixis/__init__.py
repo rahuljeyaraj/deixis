@@ -5,8 +5,10 @@ Robot-agnostic and pure: no models, camera, network or robot; the same input giv
 output. Everything robot-specific comes from the robot's `Profile`.
 """
 
+from deixis.frames import Transform, fit_transform
 from deixis.geometry import Box, Point, Polyline
 from deixis.profile import Profile, load_profile
+from deixis.scene import Thing
 from deixis.schema import schemas
 from deixis.types import Hold, Word
 from deixis.where import Answer, Ask, Size, Where
@@ -22,9 +24,12 @@ __all__ = [
     "Polyline",
     "Profile",
     "Size",
+    "Thing",
+    "Transform",
     "Where",
     "Word",
     "__version__",
+    "fit_transform",
     "load_profile",
     "schemas",
 ]

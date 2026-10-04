@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rahuljeyaraj/deixis/blob/main/schema/transform-1.json",
+  "description": "A fitted map from one frame to another: a 3x3 matrix on (x, y, 1).",
+  "properties": {
+    "version": {
+      "default": "1.0",
+      "description": "Schema version, 1.x.",
+      "title": "Version",
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "similarity",
+        "homography"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "matrix": {
+      "description": "3x3, row-major, acting on column vectors (x, y, 1).",
+      "maxItems": 3,
+      "minItems": 3,
+      "prefixItems": [
+        {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        },
+        {
+          "maxItems": 3,
+          "minItems": 3,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "type": "array"
+        }
+      ],
+      "title": "Matrix",
+      "type": "array"
+    },
+    "from_frame": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The frame it maps from.",
+      "title": "From Frame"
+    },
+    "to_frame": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "The frame it maps to.",
+      "title": "To Frame"
+    },
+    "rms_mm": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "RMS residual of the fit (to_frame).",
+      "title": "Rms Mm"
+    },
+    "max_mm": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Largest residual of the fit.",
+      "title": "Max Mm"
+    },
+    "pairs": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "How many point pairs it was fitted on.",
+      "title": "Pairs"
+    }
+  },
+  "required": [
+    "kind",
+    "matrix"
+  ],
+  "title": "Transform",
+  "type": "object"
+}
