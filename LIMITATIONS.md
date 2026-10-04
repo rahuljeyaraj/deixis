@@ -34,7 +34,8 @@ Every place is in **one flat frame per robot**: a sheet of paper, a floor, a tab
 | Virtual plotter, finger 8 mm above the paper | 3.2 mm median | same |
 | Real plotter camera, parallax | a touching fingertip reads about 3 mm toward the user, a hovering one about 7 mm | `deixis-doodle` plan, weak point W51 |
 | Web demo, angled view of a 600 × 400 mm table | 0.6 to 0.7 mm per screen pixel near you, about 1.7 mm per pixel (depth) at the far edge; 3 px of fingertip jitter ≈ 5 mm at the far edge | our spike, 4 Oct 2026 |
-| Vacuum, feet on the floor from a high camera | to measure | |
+| Vacuum, feet on the floor from a high camera | to measure on the real floor. In simulation, with the vacuum profile, a standing spot is still found with up to about 30 mm of random noise per frame (30 fps; 20 of 20 runs at 20 mm, 3 to 10 of 20 at 40 mm) | `deixis-doodle` floor camera, not yet run; simulation 4 Oct 2026 |
+| Vacuum, the camera's floor on the robot's map | the floor-to-map fit is about 4 % off in scale when the robot's lid marker is 10 cm above the floor and the camera is 2.5 m up (parallax) | `deixis-doodle/docs/vacuum-app.md` |
 
 ## L4. Settings are tuned per robot, on one person
 
