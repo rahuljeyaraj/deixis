@@ -374,6 +374,11 @@ def chessboard_distance(free_cells: np.ndarray) -> np.ndarray:
     return dist
 
 
+def _down(v: float) -> int:
+    """The largest integer not above v (rounding toward minus infinity)."""
+    return -math.ceil(-v)
+
+
 def empty_space(
     things: Sequence[Thing], size: float, profile: Profile, grid_mm: float | None = None
 ) -> tuple[Point, float] | None:
@@ -389,9 +394,9 @@ def empty_space(
     m = profile.scene.empty_margin_mm
     for o in things:
         b = o.box
-        x0 = int(math.floor((b.x - m - d.x) / res))
+        x0 = _down((b.x - m - d.x) / res)
         x1 = int(math.ceil((b.x2 + m - d.x) / res))
-        y0 = int(math.floor((b.y - m - d.y) / res))
+        y0 = _down((b.y - m - d.y) / res)
         y1 = int(math.ceil((b.y2 + m - d.y) / res))
         free_cells[max(0, y0) : max(0, y1), max(0, x0) : max(0, x1)] = 0
     dist = chessboard_distance(free_cells)

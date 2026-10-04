@@ -1,7 +1,7 @@
 """Frame fits and transforms (F18): from one robot frame to another, in pure NumPy.
 
 A robot side often needs a second frame: camera pixels to the work surface, or the camera's
-floor to the robot's own map. `fit_transform` fits one from point pairs (at least 2 for a
+ground plane to the robot's own map. `fit_transform` fits one from point pairs (at least 2 for a
 similarity, 4 for a homography) and reports its residuals; `Transform.apply_where` moves a
 `Where` (its point, box, path and covariance) into the other frame.
 
@@ -9,7 +9,7 @@ similarity, 4 for a homography) and reports its residuals; `Transform.apply_wher
 - **Homography:** a plane seen at an angle, by the normalised direct linear transform
   (Hartley and Zisserman, Multiple View Geometry, 4.4).
 
-Fitting with outliers (RANSAC) is the robot side's job; give the core clean pairs.
+Fitting with outliers (RANSAC) is the robot side's job; give the core good pairs.
 """
 
 from __future__ import annotations

@@ -14,7 +14,7 @@ Reference shapes are told apart by their keys, so a model writes compact JSON:
   {"label": "blue one"} | {"last": true}
 
 A few common slips (a bare "empty_space" string, a bare preset word, "large", "next to") are
-repaired before validation, so the core sees one clean shape. Size presets and their
+repaired before validation, so the core sees one tidy shape. Size presets and their
 synonyms come from the profile, through the validation context (`ref_context`).
 """
 
