@@ -21,12 +21,21 @@ dependencies = [
     "numpy>=1.26",
 ]
 
+[project.scripts]
+deixis-mcp = "deixis.mcp.server:main"
+
 [project.urls]
 Repository = "https://github.com/rahuljeyaraj/deixis"
+
+[project.optional-dependencies]
+mcp = [
+    "mcp>=2.3,<3",
+]
 
 [dependency-groups]
 dev = [
     "jsonschema>=4.26.0",
+    "mcp>=2.3,<3",
     "pytest>=8",
     "ruff>=0.6",
 ]
