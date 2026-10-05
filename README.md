@@ -7,7 +7,6 @@ with an uncertainty and the evidence, or one question when it is not sure.
 It is pure code: no AI models, no camera, no internet, no robot. Same input, same output.
 It depends only on Pydantic and NumPy.
 
-Status: being built (October 2026). The plan is in [docs/plan.md](docs/plan.md); what it
-cannot do is in [LIMITATIONS.md](LIMITATIONS.md).
+Status: being built (October 2026). What it cannot do is in [LIMITATIONS.md](LIMITATIONS.md).
 
 Licence: MIT.
