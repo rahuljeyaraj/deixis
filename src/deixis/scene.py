@@ -251,6 +251,25 @@ def _beside(t: Box, d: tuple[float, float], gap: float, half: tuple[float, float
     return (cx, t.y - gap - hy)
 
 
+def _ground(t: Box, c: Point, half: tuple[float, float], away: tuple[float, float]) -> Point:
+    """`c` moved so the new box's base sits level with the target's base.
+
+    On a page, things beside each other stand on the same ground: a tree put left of a house
+    must have its base on the house's base, not its middle on the house's middle, or the two
+    bases miss by half the difference in height (rahul, 8 Oct 2026: a 72.5 mm tree beside a
+    67 mm house sat 2.75 mm low).
+
+    The base is the edge away from `away` ("up the page" as the viewer sees it), so a page
+    read from the far side grounds against its other edge."""
+    if away[1] > 0:
+        return (c[0], t.y + half[1])
+    if away[1] < 0:
+        return (c[0], t.y2 - half[1])
+    if away[0] > 0:
+        return (t.x + half[0], c[1])
+    return (t.x2 - half[0], c[1])
+
+
 def _neg(v: tuple[float, float]) -> tuple[float, float]:
     return (-v[0] + 0.0, -v[1] + 0.0)
 
@@ -281,8 +300,10 @@ def relation(
     dirs = {"right_of": right, "left_of": _neg(right), "behind": away, "in_front_of": _neg(away)}
     if view == "page":
         dirs |= {"above": away, "below": _neg(away)}
+    side = view == "page" and rel in ("right_of", "left_of")
     if rel in dirs:
-        return Spot(_beside(t, dirs[rel], g, half))
+        c = _beside(t, dirs[rel], g, half)
+        return Spot(_ground(t, c, half, away) if side else c)
     if rel == "above" and view == "surface":
         rel = "on"  # a block above another one stands on it
     if rel in ("above", "below"):
@@ -293,6 +314,8 @@ def relation(
         else:
             order = ["right_of", "left_of", "in_front_of", "behind"]
         options = {r: _beside(t, dirs[r], g, half) for r in order}
+        if view == "page":  # the two sideways options stand on the target's ground
+            options |= {r: _ground(t, options[r], half, away) for r in ("right_of", "left_of")}
         for r in order:
             c = options[r]
             if fits(c, size, profile) and free(things, c, size, [target.id]):

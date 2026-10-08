@@ -90,7 +90,7 @@ def test_fits_and_free():
 @pytest.mark.parametrize(
     "rel,view,expect",
     [
-        ("left_of", "page", (40 - 10 - 10, 55)),
+        ("left_of", "page", (40 - 10 - 10, 40 + 10)),  # on the house's ground, not its middle
         ("right_of", "surface", (80 + 10 + 10, 55)),
         ("above", "page", (60, 70 + 10 + 10)),
         ("below", "page", (60, 40 - 10 - 10)),
@@ -120,9 +120,9 @@ def test_on_stacks_on_a_surface():
 
 def test_next_to_tries_the_sides_in_order():
     p = prof("page", gap_mm=10)
-    assert relation("next_to", HOUSE, 20, p).center == (100, 55)  # right
+    assert relation("next_to", HOUSE, 20, p).center == (100, 50)  # right, on its ground
     blocker = thing("x", (85, 40, 30, 30))
-    assert relation("next_to", HOUSE, 20, p, [HOUSE, blocker]).center == (20, 55)  # left
+    assert relation("next_to", HOUSE, 20, p, [HOUSE, blocker]).center == (20, 50)  # left
     q = prof("surface", gap_mm=10)
     wall = thing("w", (0, 40, 40, 30))
     # surface: right, left, then in front (toward the viewer), then behind
@@ -138,7 +138,7 @@ def test_between_and_extent():
 def test_viewer_turned_round():
     """The person stands at the far side: their right is -x and away is -y."""
     p = prof(right=(-1, 0), away=(0, -1), gap_mm=10)
-    assert relation("left_of", HOUSE, 20, p).center == (100, 55)
+    assert relation("left_of", HOUSE, 20, p).center == (100, 60)  # ground is the far edge now
     assert relation("above", HOUSE, 20, p).center == (60, 20)
     assert named("top left corner", 20, p) == (190, 10)
 
@@ -195,3 +195,25 @@ def test_empty_space():
 def test_nearest():
     assert nearest((0, 0), []) is None
     assert nearest((0, 0), [(3, 4), (1, 1), (1, 1)]) == (1, pytest.approx(2**0.5))
+
+
+def test_beside_on_a_page_stands_on_the_same_ground():
+    """A tall thing put beside a short one keeps its base on the short one's base.
+
+    Live on 8 Oct 2026 a 72.5 mm tree left of a 67 mm house was centred on the house, so the
+    two bases missed by 2.75 mm and the tree floated below the ground line.
+    """
+    p = prof("page", gap_mm=10)
+    tall = relation("right_of", HOUSE, 50, p, extent=(30, 50))
+    assert tall.center == (80 + 10 + 15, 40 + 25)  # base on the house's base (y 40)
+    short = relation("right_of", HOUSE, 10, p, extent=(10, 10))
+    assert short.center == (80 + 10 + 5, 40 + 5)
+    # Both bases are level with the house's, whatever their height.
+    assert tall.center[1] - 25 == short.center[1] - 5 == HOUSE.box.y
+
+
+def test_beside_on_a_surface_still_keeps_the_depth():
+    """On a floor or table, "right of" must not drag a thing forward: depth is not height."""
+    p = prof("surface", gap_mm=10)
+    spot = relation("right_of", HOUSE, 50, p, extent=(30, 50))
+    assert spot.center == (80 + 10 + 15, 55)  # the target's own depth, unchanged
