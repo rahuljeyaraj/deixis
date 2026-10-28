@@ -2,7 +2,7 @@
 
 `deixis` turns words like "here", "that one" and "this big", plus pointing, into a place a robot can act on. This page lists what it does **not** do, and why. Numbers come with their source. "To measure" marks numbers we will fill in from our own tests.
 
-Draft of 4 Oct 2026, written with the plan (`docs/plan.md`). Keep it true: when a limit is lifted, move it to `CHANGELOG.md`.
+First written 4 Oct 2026. When a limit is lifted, it moves to [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
@@ -12,7 +12,7 @@ Every place is in **one flat frame per robot**: a sheet of paper, a floor, a tab
 
 - **So:** no "fly up to here", no "this high", no shelves at several heights, no curved or sloping surfaces.
 - **Why:** the hand trackers and the timing rules work on a plane. Height gestures need a side view or 3D body tracking.
-- **Later:** height on samples and holds (plan task C24).
+- **Later:** height on samples and holds.
 
 ## L2. No pointing at far-away places
 
@@ -21,7 +21,7 @@ Every place is in **one flat frame per robot**: a sheet of paper, a floor, a tab
 - **Number:** pointing at a wall 2 to 3 m away is off by **61.3 cm on average**, even with the best ray model (eye through fingertip); a learned correction cut that by 37.3 % (Mayer, Wolf, Schneegass and Henze, CHI 2015).
 - **Why:** the error grows with distance, and a ray needs 3D body tracking that our helpers don't have.
 - **Instead:** walk to the spot and say "here" (feet), or use a laser pointer.
-- **Later:** cutting a 3D ray with the floor, with an uncertainty that grows with distance (plan task C23).
+- **Later:** cutting a 3D ray with the floor, with an uncertainty that grows with distance.
 
 ## L3. Precision is the pointer's, not ours
 
@@ -29,13 +29,13 @@ Every place is in **one flat frame per robot**: a sheet of paper, a floor, a tab
 
 | Setup | Number | Source |
 |---|---|---|
-| Pen plotter, finger on the paper, real rig | 0.6 mm median placement error | our measurements, Oct 2026 (presentation research, section 3.4) |
-| Virtual plotter, finger touching | 0.14 mm median, 1.04 mm worst (80 runs) | `deixis-doodle/docs/sessions/virtual-report.md` |
+| Pen plotter, finger on the paper, real rig | 0.6 mm median placement error | our M2 test on the real plotter, 2 Oct 2026 |
+| Virtual plotter, finger touching | 0.14 mm median, 1.04 mm worst (80 runs) | our virtual plotter runs in `deixis-doodle`, Oct 2026 |
 | Virtual plotter, finger 8 mm above the paper | 3.2 mm median | same |
-| Real plotter camera, parallax | a touching fingertip reads about 3 mm toward the user, a hovering one about 7 mm | `deixis-doodle` plan, weak point W51 |
+| Real plotter camera, parallax | a touching fingertip reads about 3 mm toward the user, a hovering one about 7 mm | our measurements on the real plotter, Oct 2026 |
 | Web demo, angled view of a 600 × 400 mm table | 0.6 to 0.7 mm per screen pixel near you, about 1.7 mm per pixel (depth) at the far edge; 3 px of fingertip jitter ≈ 5 mm at the far edge | our spike, 4 Oct 2026 |
 | Vacuum, feet on the floor from a high camera | to measure on the real floor. In simulation, with the vacuum profile, a standing spot is still found with up to about 30 mm of random noise per frame (30 fps; 20 of 20 runs at 20 mm, 3 to 10 of 20 at 40 mm) | `deixis-doodle` floor camera, not yet run; simulation 4 Oct 2026 |
-| Vacuum, the camera's floor on the robot's map | the floor-to-map fit is about 4 % off in scale when the robot's lid marker is 10 cm above the floor and the camera is 2.5 m up (parallax) | `deixis-doodle/docs/vacuum-app.md` |
+| Vacuum, the camera's floor on the robot's map | the floor-to-map fit is about 4 % off in scale when the robot's lid marker is 10 cm above the floor and the camera is 2.5 m up (parallax) | our vacuum app in `deixis-doodle`, Oct 2026 |
 
 ## L4. Settings are tuned per robot, on one person
 
@@ -67,7 +67,7 @@ The pointing words ("here", "there", "this", "that", "these", "those", "so") and
 
 - **Number:** an overhead camera sees hands held 15 cm above the paper about **30 % bigger** (camera 60 cm up). The correction belongs to the camera side.
 - **Number:** a one-hand pinch reaches about 15 to 20 cm, two hands about 1 m (design estimate, not measured).
-- **Note:** we found **no published study** of how accurately people show a size with their hands (literature review, section 3.6). Our own numbers are a first measurement, not a norm.
+- **Note:** we found **no published study** of how accurately people show a size with their hands. Our own numbers are a first measurement, not a norm.
 
 ## L9. One point of view for "left", "above" and "next to"
 
@@ -84,7 +84,7 @@ Relations are worked out in **one viewer's frame**, set in the profile (for exam
 
 Word times and pointer times must come from the same clock, to within a few tens of milliseconds. `deixis` trusts the timestamps it gets.
 
-- **Number:** the speech model's word times are good to about 50 ms (presentation research, section 3.3).
+- **Number:** the speech model's word times are good to about 50 ms (our working figure; not measured here).
 
 ## L12. Not a safety system
 
@@ -94,11 +94,11 @@ Word times and pointer times must come from the same clock, to within a few tens
 
 - "Go **that way**" (a direction), "turn it **this way**" (a rotation) and "move **like this**" (a traced shape) have no message type yet.
 - "**These three**" and circling a group are not supported (only "between **these two**").
-- Planned as `Where` version 1.1 (plan tasks C25, C26).
+- Planned for `Where` version 1.1.
 
 ## L14. One frame per request
 
-All places in one request are in one frame. Two robots in one room work if they share that frame (one camera, one floor), and each robot maps the frame to its own map. Two robots with different frames in one sentence need two requests for now (plan task C27).
+All places in one request are in one frame. Two robots in one room work if they share that frame (one camera, one floor), and each robot maps the frame to its own map. Two robots with different frames in one sentence need two requests for now.
 
 ## L15. The MCP server is local and per sentence
 
@@ -111,7 +111,7 @@ The MCP server runs on the same computer as the robot app (stdio) and is called 
 - **So:** MCP adds well under a frame's time per sentence; the speech model and the language
   model (about 0.2 s and 1.5 s) dominate. If MCP fails on the day, one setting
   (`DEIXIS_MODE=direct`) runs the same code in-process.
-- **Later:** a networked server that outside agents can query live (plan task C22).
+- **Later:** a networked server that outside agents can query live.
 
 ---
 
@@ -120,5 +120,4 @@ The MCP server runs on the same computer as the robot app (stdio) and is called 
 - Mayer, S., Wolf, K., Schneegass, S. and Henze, N. "Modeling distant pointing for compensating systematic displacements." CHI 2015.
 - Oviatt, S., DeAngeli, A. and Kuhn, K. "Integration and synchronization of input modes during multimodal human-computer interaction." CHI 1997.
 - Zhang et al. "Do vision-language models represent space and how?" (COMFORT). ICLR 2025. https://arxiv.org/abs/2410.17385
-- Our literature review: `deixis-doodle/docs/robot-deixis-literature-review.md`, sections 3.2 to 3.6.
-- Our measurements: `deixis-doodle/docs/sessions/virtual-report.md`; `deixis-doodle/docs/point-and-draw-plan.md` (section 4.3 and weak point W51); the angled-view spike, `deixis-doodle-scratch/core/spikes/angled_homography.py` (4 Oct 2026).
+- Our own numbers come from test runs of [deixis-doodle](https://github.com/rahuljeyaraj/deixis-doodle) and [deixis-web-demo](https://github.com/rahuljeyaraj/deixis-web-demo) in October 2026, and from `scripts/latency.py` in this repo.
